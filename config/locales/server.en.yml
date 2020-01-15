@@ -1,0 +1,5 @@
+en:
+  site_settings:
+    neo4j_blog_url: "Latest blog post widget: URL for source of blog posts"
+    neo4j_blog_post_filter_tag_id: "Latest blog post widget: Numerical tag id to filter for latest appropriate highlighted post"
+    neo4j_latest_announcements_category: "Category from which the Latest Announcements widget gets its feed"

@@ -1,0 +1,12 @@
+plugins:
+  neo4j_blog_url:
+    client: false
+    default: 'https://neo4j.com'
+  neo4j_blog_post_filter_tag_id:
+    client: true
+    default: 3201
+  neo4j_latest_announcements_category:
+    client: true
+    default: ''
+    type: category_list
+    list_type: "compact"
