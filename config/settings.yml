@@ -1,4 +1,16 @@
 plugins:
+  neo4j_twitter_script:
+    client: true
+    default: 'https://platform.twitter.com/widgets.js'
+  neo4j_twitter_handle_url:
+    client: true
+    default: 'https://twitter.com/neo4j?ref_src=twsrc%5Etfw'
+  neo4j_twitter_height:
+    client: true
+    default: 294
+  neo4j_twitter_width:
+    client: true
+    default: 220
   neo4j_blog_url:
     client: false
     default: 'https://neo4j.com'

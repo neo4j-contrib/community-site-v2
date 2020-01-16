@@ -4,3 +4,45 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+// .timeline-Header-title {
+//   display: none !important;
+// }
+
+.announcements-entry-title, .announcements-view-all {
+  font-size: 12px;
+}
+
+.announcements-view-all {
+  font-weight: bold;
+}
+
+.announcements-entry, .announcements-view-all {
+  width: 100%;
+  list-style-type: none;
+  border-bottom: solid #3333 1px;
+  padding: 5px 0  5px 5px;
+}
+
+.latest-blog-post-title {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.latest-blog-post-author-name {
+  font-size: 12px;
+}
+
+.latest-blog-post-date {
+  font-size: 12px;
+  color: grey;
+  padding: 0 0 10px 0;
+}
+
+.latest-blog-post-excerpt {
+  font-size: 12px;
+  //color: grey;
+  padding: 0 0 10px 0;
+}
+
+

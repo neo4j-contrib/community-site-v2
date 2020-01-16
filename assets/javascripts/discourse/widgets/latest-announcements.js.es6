@@ -54,7 +54,7 @@ export default createWidget('latest-announcements', {
 
     var buffer = [];
     var announcements = state.announcements;
-debugger;
+
     if (announcements !== null) {
       if (announcements.length > 0) {
         for (var i = 0, len = announcements.length; i < len; i++) {
@@ -62,9 +62,9 @@ debugger;
             h("li",
               h("a", {
                   "attributes": {
-                    "href": `/t/${announcements[i].id}`,
-                    "rel": "noopener",
-                    "target":"_blank"
+                    "href": `/t/${announcements[i].id}`,//, //uncomment these for new tab
+                        // "rel": "noopener",  //uncomment these for new tab
+                        // "target":"_blank"   //uncomment these for new tab
                     }
                 },
                 h("span.announcements-entry-title",
@@ -76,6 +76,23 @@ debugger;
         }
       }
     }
-    return h('div.announcements', [h('h3',`${I18n.t('neo4j.widgets.announcements.title')}`) ,buffer]);
+    return h('div.announcements',
+            [h('h3',`${I18n.t('neo4j.widgets.announcements.title')}`),
+              h('div.announcements-list-container',
+                [buffer, 
+                 h('div.announcements-view-all',
+                  h('a', {
+                      "attributes": {
+                        "href": `/c/${Discourse.SiteSettings.neo4j_latest_announcements_category}`//, //uncomment these for new tab
+                        // "rel": "noopener",  //uncomment these for new tab
+                        // "target":"_blank"   //uncomment these for new tab
+                        }
+                      }, `${I18n.t('neo4j.widgets.announcements.link-text')}`
+                    )
+                 )
+                ]
+              )
+              ]
+            );
    }
 });

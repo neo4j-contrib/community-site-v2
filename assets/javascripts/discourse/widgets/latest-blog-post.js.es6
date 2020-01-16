@@ -77,9 +77,9 @@ export default createWidget('latest-blog-post', {
                     "target":"_blank"
                     }
                 },
-                h("span.latest-blog-post-title",
-                     `${ unescapeHtml(blogpost.title.rendered)}` ))),
-              h("h6",
+              h("span.latest-blog-post-title",
+                `${ unescapeHtml(blogpost.title.rendered)}` ))),
+              h("div.latest-blog-post-author-container",
                 h("a", {
                     "attributes": {
                       "href": `${blogpost.authors_url}`,
@@ -87,9 +87,12 @@ export default createWidget('latest-blog-post', {
                       "target":"_blank"
                       }
                   },
-                  h("span.latest-blog-post-author",
+                h("div.latest-blog-post-author-name",
                         `${blogpost.authors_name}` ))),
-              h("span.latest-blog-post-excerpt",
+              h("div.latest-blog-post-date",
+                        `${moment(blogpost.date).format("MMM Do")}`),
+              //h("br"),
+              h("div.latest-blog-post-excerpt",
                 `${unescapeHtml(blogpost.excerpt.rendered)}`)
             ]
           )

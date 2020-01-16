@@ -2,7 +2,10 @@ en:
   js:
     neo4j:
       widgets:
+        tweets:
+          title: "Latest Tweets"
         blog_post:
           title: "From the blog"
         announcements:
           title: "Latest Announcements"
+          link-text: "View all >>"

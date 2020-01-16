@@ -20,23 +20,25 @@ export default createWidget('latest-tweet', {
         h("div.twitter-widget-container"),
         [
           h("a", {
-          "attributes": {
-            "class" : "twitter-timeline",
-            "data-width" : "220",
-            "data-height" : "294",
-            "href": "https://twitter.com/neo4j?ref_src=twsrc%5Etfw",
-            "rel": "noopener",
-            "target": "_blank"
-          }}, 'Tweets by neo4j'),
+            "attributes": {
+              "class" : "twitter-timeline",
+              "data-width" : `${Discourse.SiteSettings.neo4j_twitter_width}`,
+              "data-height" : `${Discourse.SiteSettings.neo4j_twitter_height}`,
+              "href": `${Discourse.SiteSettings.neo4j_twitter_handle_url}`,
+              "rel": "noopener",
+              "target": "_blank"
+              }
+            }, `${I18n.t('neo4j.widgets.tweets.title')}`
+          ),
           h("script", {
             "charset" : "utf-8",
-              "src": "https://platform.twitter.com/widgets.js",
+              "src": `${Discourse.SiteSettings.neo4j_twitter_script}`,
               "async": ""
             }
           )
         ]
       ]
     }
-    return h('div.twitter-widget-inner', nodes);
+    return h('div.twitter-widget-inner', [h('h3',`${I18n.t('neo4j.widgets.tweets.title')}`), nodes]);
   }
 })
