@@ -9,3 +9,6 @@ en:
         announcements:
           title: "Latest Announcements"
           link-text: "View all >>"
+        custom-categories:
+          title: "Discussions"
+          link-text: "View all >>"
