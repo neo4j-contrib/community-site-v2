@@ -23,6 +23,12 @@ after_initialize do
     end
   end
 
+
+  # require 'homepage_constraint'
+  # Discourse::Application.routes.prepend do
+  #   HomePageConstraint.new("home")
+  # end
+
   Discourse::Application.routes.append do
     mount ::DiscourseNeo4j::Engine, at: '/'
   end

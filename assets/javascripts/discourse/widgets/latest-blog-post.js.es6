@@ -6,10 +6,9 @@ export default createWidget('latest-blog-post', {
   tagName: "div.latest-blog-post",
   buildKey: () => 'latest-blog-post',
 
-  defaultState(attrs) {
+  defaultState() {
     return {
       blogposts: null,
-      topic: attrs.topic,
       loaded: false,
       loading: false
     };
@@ -48,13 +47,11 @@ export default createWidget('latest-blog-post', {
     });
   },
 
-  html(attrs, state) {
+  html(args, state) {
 
     function unescapeHtml(safe) {
       return $('<div />').html(safe).text();
     }
-
-    if (state.topic) {return []};
 
     if (!state.loaded) {
       this.refreshPosts(state);

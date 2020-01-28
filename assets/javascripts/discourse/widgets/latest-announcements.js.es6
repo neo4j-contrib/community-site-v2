@@ -15,16 +15,16 @@ export default createWidget('latest-announcements', {
   tagName: "div.latest-announcements",
   buildKey: () => 'latest-announcements',
 
-  defaultState(attrs) {
+  defaultState() {
     return {
       announcements: null,
-      topic: attrs.topic,
       loaded: false,
       loading: false
     };
   },
 
   refreshAnnouncements(state) {
+
     if (this.loading) { return; }
 
     state.loading = true;
@@ -41,8 +41,7 @@ export default createWidget('latest-announcements', {
     });
   },
 
-  html(attrs, state) {
-    if (state.topic) {return []};
+  html(args, state) {
 
     if (!state.loaded) {
       this.refreshAnnouncements(state);
