@@ -1,3 +1,83 @@
+.neo4j-home-grid {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: auto auto auto;
+  grid-template-areas:
+   "header header"
+   "main sidebar"
+   "footer footer"
+}
+
+.neo4j-home-grid-sidebar {
+  display: grid;
+  grid-area: sidebar;
+  grid-gap: 20px;
+  grid-template-columns: auto;
+  grid-template-rows: auto auto auto;
+  grid-template-areas:
+   "announce"
+   "blog"
+   "tweets"
+   "links"
+}
+
+.neo4j-home-grid-main {
+  display: grid;
+  grid-area: main;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto auto auto auto;
+  grid-template-areas:
+   "contents"
+   "kudos"
+   "featured"
+   "help"
+   "projects"
+}
+
+.neo4j-home-grid-header {
+  grid-area: header;
+}
+
+.neo4j-home-grid-footer {
+  grid-area: footer;
+}
+
+.neo4j-home-grid-contents {
+  grid-area: contents;
+}
+
+.neo4j-home-grid-kudos {
+  grid-area: kudos;
+}
+
+.neo4j-home-grid-featured {
+  grid-area: featured;
+}
+
+.neo4j-home-grid-help {
+  grid-area: help;
+}
+
+.neo4j-home-grid-projects {
+  grid-area: projects;
+}
+
+.neo4j-home-grid-announcements {
+  grid-area: announce;
+}
+
+.neo4j-home-grid-blog {
+  grid-area: blog;
+}
+
+.neo4j-home-grid-tweets {
+  grid-area: tweets;
+}
+
+
+
+
 .wp-blog-posts-widget-entry-title {
   width: 220px;
   white-space: nowrap;
