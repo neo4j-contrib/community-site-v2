@@ -12,3 +12,5 @@ en:
         custom-categories:
           title: "Discussions"
           link-text: "View all >>"
+        featured-member:
+          title: "Featured Community Member"
