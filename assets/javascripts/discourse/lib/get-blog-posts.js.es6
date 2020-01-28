@@ -1,9 +1,9 @@
 import { ajax } from 'discourse/lib/ajax';
 import { Promise } from "rsvp";
 
-let getBlogPosts = () =>  {
+let getLatestBlogPost = () =>  {
      return new Promise((resolve, reject) => {
-          ajax("/wpblogposts.json").then(result => {
+          ajax("/wplatestblogpost.json").then(result => {
             resolve(result)
           }).catch((err) => {
             reject([]);
@@ -21,4 +21,14 @@ let getBlogAuthor = (id) =>  {
         });
       }
 
-export { getBlogPosts, getBlogAuthor } ;
+let getFeaturedMember = () =>  {
+     return new Promise((resolve, reject) => {
+          ajax(`/wpfeaturedmember.json`).then(result => {
+            resolve(result)
+          }).catch((err) => {
+            reject([]);
+          })
+        });
+      }
+
+export { getLatestBlogPost, getBlogAuthor, getFeaturedMember } ;

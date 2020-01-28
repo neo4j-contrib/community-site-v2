@@ -33,14 +33,17 @@ after_initialize do
     mount ::DiscourseNeo4j::Engine, at: '/'
   end
 
+  load File.expand_path('../lib/featuredmember.rb', __FILE__)
   load File.expand_path('../controllers/wpblogposts.rb', __FILE__)
   load File.expand_path('../serializers/announcementtopics.rb', __FILE__)
   load File.expand_path('../controllers/announcementtopics.rb', __FILE__)
 
   ::DiscourseNeo4j::Engine.routes.draw do
-    get "/wpblogposts" => "wpblogposts#posts"
+    get "/wplatestblogpost" => "wpblogposts#latest_post"
     get "/wpblogauthor" => "wpblogposts#author"
+    get "/wpfeaturedmember" => "wpblogposts#featured_member"
     get "/announcementtopics" => "announcementtopics#topics"
+    
   end
 
   DiscourseEvent.on(:layouts_ready) do

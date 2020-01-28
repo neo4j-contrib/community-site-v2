@@ -1,6 +1,6 @@
 import { createWidget } from 'discourse/widgets/widget';
 import { h } from 'virtual-dom';
-import { getBlogPosts, getBlogAuthor } from '../lib/get-blog-posts';
+import { getLatestBlogPost, getBlogAuthor } from '../lib/get-blog-posts';
 
 export default createWidget('latest-blog-post', {
   tagName: "div.latest-blog-post",
@@ -8,7 +8,7 @@ export default createWidget('latest-blog-post', {
 
   defaultState() {
     return {
-      blogposts: null,
+      blogpost: null,
       loaded: false,
       loading: false
     };
@@ -19,22 +19,21 @@ export default createWidget('latest-blog-post', {
 
     state.loading = true;
 
-    getBlogPosts().then((result) => {
+    getLatestBlogPost().then((result) => {
 
-      if (result.length) {
-        state.blogposts = result.filter((blogpost) => {
-          return blogpost.tags.includes(Discourse.SiteSettings.neo4j_blog_post_filter_tag_id)
-        });
+      if (result.id) {
+
+          state.blogpost = result;
         
-        if (state.blogposts[0]) {
-          getBlogAuthor(state.blogposts[0].author).then((result) => {
+        if (state.blogpost) {
+          getBlogAuthor(state.blogpost.author).then((result) => {
 
             if (result.name) {
-              state.blogposts[0].authors_name = result.name;
-              state.blogposts[0].authors_url = result.link;
+              state.blogpost.authors_name = result.name;
+              state.blogpost.authors_url = result.link;
             } else {
-              state.blogposts[0].authors_name = '';
-              state.blogposts[0].authors_url = '';
+              state.blogpost.authors_name = '';
+              state.blogpost.authors_url = '';
             }
             state.loading = false;
             state.loaded = true;
@@ -42,7 +41,7 @@ export default createWidget('latest-blog-post', {
           })
         };
       } else {
-        state.blogposts = [];
+        state.blogpost = {};
       }
     });
   },
@@ -62,7 +61,7 @@ export default createWidget('latest-blog-post', {
     }
 
     var buffer = [];
-    var blogpost = state.blogposts[0];
+    var blogpost = state.blogpost;
 
     if (blogpost) {
           buffer = h("div.latest-blog-post-entry",
