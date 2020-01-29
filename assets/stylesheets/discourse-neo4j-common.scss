@@ -29,7 +29,7 @@
   grid-template-rows: auto auto auto auto auto;
   grid-template-areas:
    "contents"
-   "kudos"
+   "ninjas"
    "featured"
    "help"
    "projects"
@@ -47,8 +47,8 @@
   grid-area: contents;
 }
 
-.neo4j-home-grid-kudos {
-  grid-area: kudos;
+.neo4j-home-grid-ninjas {
+  grid-area: ninjas;
 }
 
 .neo4j-home-grid-featured {
@@ -75,7 +75,35 @@
   grid-area: tweets;
 }
 
+.ninjas-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 15px;
+  grid-template-areas: "ninja ninja ninja"
+}
 
+.ninjas-entry {
+  color: black;   
+  padding: 10px;
+    text-align: center;
+    box-shadow: 0px 2px 4px 2px rgb(138, 138, 138);
+    border-radius: 4px;
+    a {
+      color: black;
+    }
+ }
+
+ .ninja-name,.ninja-username {
+  font-weight: bold;
+}
+
+.ninja-name,.ninja-member-since {
+  color: grey;
+}
+
+ .featured-member-image img{
+   width: 100%;
+ }
 
 
 .wp-blog-posts-widget-entry-title {
@@ -84,10 +112,6 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
-// .timeline-Header-title {
-//   display: none !important;
-// }
 
 .announcements-entry-title, .announcements-view-all {
   font-size: 12px;
@@ -102,6 +126,12 @@
   list-style-type: none;
   border-bottom: solid #3333 1px;
   padding: 5px 0  5px 5px;
+  a:link, a:visited {
+    color: black;
+  };
+  a:hover {
+    color: #77c1f4;
+  }
 }
 
 .latest-blog-post-title {
@@ -121,13 +151,17 @@
 
 .latest-blog-post-excerpt {
   font-size: 12px;
-  //color: grey;
   padding: 0 0 10px 0;
 }
 
-
 .custom-categories-widget-header {
   display: block;
+  a:link, a:visited {
+    color: black;
+  };
+  a:hover {
+    color: #77c1f4;
+  }
 }
 
 .custom-categories-widget-title {
@@ -182,7 +216,7 @@
 
 .tabset > label:hover,
 .tabset > input:focus + label {
-  color: #06c;
+  color: #77c1f4;
 }
 
 .tabset > input:focus + label::after,
@@ -218,6 +252,9 @@
   background: white;
   border-radius: 3px;
   a:link, a:visited {
-  color: black;
+    color: black;
+  };
+  a:hover {
+    color: #77c1f4;
   }
 }
