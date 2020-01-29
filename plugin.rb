@@ -35,6 +35,8 @@ after_initialize do
 
   load File.expand_path('../lib/featuredmember.rb', __FILE__)
   load File.expand_path('../controllers/wpblogposts.rb', __FILE__)
+  load File.expand_path('../serializers/ninjas.rb', __FILE__)
+  load File.expand_path('../controllers/ninjas.rb', __FILE__)
   load File.expand_path('../serializers/announcementtopics.rb', __FILE__)
   load File.expand_path('../controllers/announcementtopics.rb', __FILE__)
 
@@ -43,7 +45,7 @@ after_initialize do
     get "/wpblogauthor" => "wpblogposts#author"
     get "/wpfeaturedmember" => "wpblogposts#featured_member"
     get "/announcementtopics" => "announcementtopics#topics"
-    
+    get "/ninjas" => "ninjas#list"
   end
 
   DiscourseEvent.on(:layouts_ready) do

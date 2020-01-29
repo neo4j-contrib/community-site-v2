@@ -14,3 +14,6 @@ en:
           link-text: "View all >>"
         featured-member:
           title: "Featured Community Member"
+        ninjas:
+          title: "Neo4j Ninjas of the Week"
+          since: "Member since"
