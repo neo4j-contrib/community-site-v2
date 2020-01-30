@@ -1,15 +1,6 @@
 import { createWidget } from 'discourse/widgets/widget';
 import { h } from 'virtual-dom';
-import { ajax } from 'discourse/lib/ajax';
-import { getOwner } from 'discourse-common/lib/get-owner';
 import { getAnnouncementTopics } from '../lib/get-announcement-topics';
-import {
-  default as discourseComputed,
-  observes,
-  on
-} from "discourse-common/utils/decorators";
-import { alias, and, equal, not } from "@ember/object/computed";
-import { inject } from "@ember/controller";
 
 export default createWidget('latest-announcements', {
   tagName: "div.latest-announcements",
@@ -60,15 +51,11 @@ export default createWidget('latest-announcements', {
           buffer[i] = h("div.announcements-entry",
             h("li",
               h("a", {
-                  "attributes": {
-                    "href": `/t/${announcements[i].id}`,//, //uncomment these for new tab
-                        // "rel": "noopener",  //uncomment these for new tab
-                        // "target":"_blank"   //uncomment these for new tab
-                    }
-                },
-                h("span.announcements-entry-title",
-                     `${announcements[i].title}` )
-                    
+                "attributes": {
+                  "href": `/t/${announcements[i].id}`
+                }
+              },
+                h("span.announcements-entry-title", announcements[i].title)    
               )
             )
           )
@@ -76,22 +63,20 @@ export default createWidget('latest-announcements', {
       }
     }
     return h('div.announcements',
-            [h('h3',`${I18n.t('neo4j.widgets.announcements.title')}`),
+            [h('h3', I18n.t('neo4j.widgets.announcements.title')),
               h('div.announcements-list-container',
                 [buffer, 
                  h('div.announcements-view-all',
                   h('a', {
-                      "attributes": {
-                        "href": `/c/${Discourse.SiteSettings.neo4j_latest_announcements_category}`//, //uncomment these for new tab
-                        // "rel": "noopener",  //uncomment these for new tab
-                        // "target":"_blank"   //uncomment these for new tab
-                        }
-                      }, `${I18n.t('neo4j.widgets.announcements.link-text')}`
-                    )
+                    "attributes": {
+                      "href": `/c/${Discourse.SiteSettings.neo4j_latest_announcements_category}`
+                    }
+                    }, I18n.t('neo4j.widgets.announcements.link-text')
+                  )
                  )
                 ]
               )
-              ]
-            );
-   }
+            ]
+          );
+  }
 });

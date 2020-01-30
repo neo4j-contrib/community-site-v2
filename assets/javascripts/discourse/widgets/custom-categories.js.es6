@@ -15,14 +15,13 @@ export default createWidget('custom-categories', {
     if (categories !== null) {
       if (categories.length > 0) {
         categories.forEach(category => {
-
-          categories_buffer.push ( [
+          categories_buffer.push ([
               h("input", {
                 "attributes": {
                   "type": "radio",
                   "name": "tabset",
                   "id": `tab${category.id}`,
-                  "aria-controls": `${category.slug}`,
+                  "aria-controls": category.slug,
                   "checked": ""
                 }
               }),
@@ -31,12 +30,9 @@ export default createWidget('custom-categories', {
                     "class": "underline",
                     "for": `tab${category.id}`
                   }
-                },`${category.name}` )
-              ]
-            )
-          
-        }
-        );
+                }, category.name)
+          ])
+        });
 
         var subcategories_buffer = [];
         var subcategory_tabs = [];
@@ -51,48 +47,45 @@ export default createWidget('custom-categories', {
                   "attributes": {
                   "href": `/c/${subcategory.id}`
                   }
-                  },`${subcategory.name}`)
+                }, subcategory.name)
               )
             ]);
           });
 
           subcategories_buffer.push (
             h('div.subcategory',
-            h('a', {
-             "attributes": {
-                        "href": `/c/${category.id}`//, //uncomment these for new tab
-                        // "rel": "noopener",  //uncomment these for new tab
-                        // "target":"_blank"   //uncomment these for new tab
-                        }
-                      }, `${I18n.t('neo4j.widgets.announcements.link-text')}`
-                    )
-                 ));
+              h('a', {
+                "attributes": {
+                  "href": `/c/${category.id}`
+                }
+              }, I18n.t('neo4j.widgets.announcements.link-text'))
+            )
+          );
 
           subcategory_tabs.push ([
             h("section", {
                 "attributes" :{
                   "class": "tab-panel",
-                  "id": `${category.slug}`
+                  "id": category.slug
                 }},
-            h("div.subcategory-grid",subcategories_buffer))]);
+            h("div.subcategory-grid",subcategories_buffer))
+          ]);
         })
       }
     };
     
     return h('div.custom-categories', [
             h('div.custom-categories-widget-header', [
-            h('h3.custom-categories-widget-title',`${I18n.t('neo4j.widgets.custom-categories.title')}`),
-              h('a.custom-categories-widget-main-link',  {
-                      "attributes": {
-                        "href": `/latest`//, //uncomment these for new tab
-                        // "rel": "noopener",  //uncomment these for new tab
-                        // "target":"_blank"   //uncomment these for new tab
-                        }
-                      },`${I18n.t('neo4j.widgets.custom-categories.link-text')}`)]),
-              h('div.tabset',
-                [categories_buffer, h("div.tab-panels", subcategory_tabs)
-              ]
-            
-            )]);
-   }
+            h('h3.custom-categories-widget-title', I18n.t('neo4j.widgets.custom-categories.title')),
+              h('a.custom-categories-widget-main-link', {
+                "attributes": {
+                  "href": `/latest`
+                }
+              }, I18n.t('neo4j.widgets.custom-categories.link-text'))
+            ]),
+            h('div.tabset',
+              [categories_buffer, h("div.tab-panels", subcategory_tabs)]
+            )
+           ]);
+  }
 });
