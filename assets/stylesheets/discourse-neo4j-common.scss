@@ -1,3 +1,12 @@
+// Neo4j Community Colour Scheme
+
+$neo4j-pale-blue: #77c1f4;
+$neo4j-green: rgb(108,201,155);
+$neo4j-grey: rgb(138, 138, 138);
+$neo4j-dark: black;
+
+// Neo4j Community Landing Layout
+
 .neo4j-home-grid {
   display: grid;
   grid-gap: 20px;
@@ -83,13 +92,13 @@
 }
 
 .ninjas-entry {
-  color: black;   
+  color: $neo4j-dark;   
   padding: 10px;
     text-align: center;
     box-shadow: 0px 2px 4px 2px rgb(138, 138, 138);
     border-radius: 4px;
     a {
-      color: black;
+      color: $neo4j-dark;
     }
  }
 
@@ -98,7 +107,7 @@
 }
 
 .ninja-name,.ninja-member-since {
-  color: grey;
+  color: $neo4j-grey;
 }
 
  .featured-member-image img{
@@ -127,10 +136,10 @@
   border-bottom: solid #3333 1px;
   padding: 5px 0  5px 5px;
   a:link, a:visited {
-    color: black;
+    color: $neo4j-dark;
   };
   a:hover {
-    color: #77c1f4;
+    color: $neo4j-pale-blue;
   }
 }
 
@@ -145,7 +154,7 @@
 
 .latest-blog-post-date {
   font-size: 12px;
-  color: grey;
+  color: $neo4j-grey;
   padding: 0 0 10px 0;
 }
 
@@ -157,10 +166,10 @@
 .custom-categories-widget-header {
   display: block;
   a:link, a:visited {
-    color: black;
+    color: $neo4j-dark;
   };
   a:hover {
-    color: #77c1f4;
+    color: $neo4j-pale-blue;
   }
 }
 
@@ -196,7 +205,7 @@
   border-bottom: 0;
   cursor: pointer;
   font-weight: 600;
-  color: grey;
+  color: $neo4j-grey;
 }
 
 .tabset > label::after {
@@ -216,17 +225,17 @@
 
 .tabset > label:hover,
 .tabset > input:focus + label {
-  color: #77c1f4;
+  color: $neo4j-pale-blue;
 }
 
 .tabset > input:focus + label::after,
 .tabset > input:checked + label::after {
-  background: #77c1f4;
-  color: black;
+  background: $neo4j-pale-blue;
+  color: $neo4j-dark;
 }
 
 .tabset > input:checked + label {
-  color: black;
+  color: $neo4j-dark;
 }
 
 .tab-panel {
@@ -242,8 +251,8 @@
      background-image:
         -webkit-linear-gradient(
         left,
-        #77c1f4,
-        rgb(108,201,155)
+        $neo4j-pale-blue,
+        $neo4j-green
     )
 }
 
@@ -252,9 +261,9 @@
   background: white;
   border-radius: 3px;
   a:link, a:visited {
-    color: black;
+    color: $neo4j-dark;
   };
   a:hover {
-    color: #77c1f4;
+    color: $neo4j-pale-blue;
   }
 }
