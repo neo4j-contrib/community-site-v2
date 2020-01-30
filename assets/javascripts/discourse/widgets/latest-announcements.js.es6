@@ -22,7 +22,7 @@ export default createWidget('latest-announcements', {
 
     getAnnouncementTopics().then((result) => {
       if (result.length) {
-          state.announcements = result.slice(0,4);
+          state.announcements = result;
       } else {
         state.announcements = [];
       }
@@ -47,19 +47,19 @@ export default createWidget('latest-announcements', {
 
     if (announcements !== null) {
       if (announcements.length > 0) {
-        for (var i = 0, len = announcements.length; i < len; i++) {
-          buffer[i] = h("div.announcements-entry",
-            h("li",
-              h("a", {
-                "attributes": {
-                  "href": `/t/${announcements[i].id}`
-                }
-              },
-                h("span.announcements-entry-title", announcements[i].title)    
+        announcements.forEach (announcement => {
+          buffer.push(h("div.announcements-entry",
+              h("li",
+                h("a", {
+                  "attributes": {
+                    "href": `/t/${announcement.id}`
+                  }
+                },
+                  h("span.announcements-entry-title", announcement.title)    
+                )
               )
-            )
-          )
-        }
+          ))
+        })
       }
     }
     return h('div.announcements',
