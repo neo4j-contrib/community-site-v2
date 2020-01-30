@@ -1,15 +1,6 @@
 import { createWidget } from 'discourse/widgets/widget';
 import { h } from 'virtual-dom';
-import { ajax } from 'discourse/lib/ajax';
-import { getOwner } from 'discourse-common/lib/get-owner';
 import { getAnnouncementTopics } from '../lib/get-announcement-topics';
-import {
-  default as discourseComputed,
-  observes,
-  on
-} from "discourse-common/utils/decorators";
-import { alias, and, equal, not } from "@ember/object/computed";
-import { inject } from "@ember/controller";
 
 export default createWidget('latest-announcements', {
   tagName: "div.latest-announcements",
@@ -31,7 +22,7 @@ export default createWidget('latest-announcements', {
 
     getAnnouncementTopics().then((result) => {
       if (result.length) {
-          state.announcements = result.slice(0,4);
+          state.announcements = result;
       } else {
         state.announcements = [];
       }
@@ -56,42 +47,36 @@ export default createWidget('latest-announcements', {
 
     if (announcements !== null) {
       if (announcements.length > 0) {
-        for (var i = 0, len = announcements.length; i < len; i++) {
-          buffer[i] = h("div.announcements-entry",
-            h("li",
-              h("a", {
+        announcements.forEach (announcement => {
+          buffer.push(h("div.announcements-entry",
+              h("li",
+                h("a", {
                   "attributes": {
-                    "href": `/t/${announcements[i].id}`,//, //uncomment these for new tab
-                        // "rel": "noopener",  //uncomment these for new tab
-                        // "target":"_blank"   //uncomment these for new tab
-                    }
+                    "href": `/t/${announcement.id}`
+                  }
                 },
-                h("span.announcements-entry-title",
-                     `${announcements[i].title}` )
-                    
+                  h("span.announcements-entry-title", announcement.title)    
+                )
               )
-            )
-          )
-        }
+          ))
+        })
       }
     }
     return h('div.announcements',
-            [h('h3',`${I18n.t('neo4j.widgets.announcements.title')}`),
+            [h('h3', I18n.t('neo4j.widgets.announcements.title')),
               h('div.announcements-list-container',
                 [buffer, 
                  h('div.announcements-view-all',
                   h('a', {
-                      "attributes": {
-                        "href": `/c/${Discourse.SiteSettings.neo4j_latest_announcements_category}`//, //uncomment these for new tab
-                        // "rel": "noopener",  //uncomment these for new tab
-                        // "target":"_blank"   //uncomment these for new tab
-                        }
-                      }, `${I18n.t('neo4j.widgets.announcements.link-text')}`
-                    )
+                    "attributes": {
+                      "href": `/c/${Discourse.SiteSettings.neo4j_latest_announcements_category}`
+                    }
+                    }, I18n.t('neo4j.widgets.announcements.link-text')
+                  )
                  )
                 ]
               )
-              ]
-            );
-   }
+            ]
+          );
+  }
 });

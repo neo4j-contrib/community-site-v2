@@ -1,17 +1,6 @@
 import { createWidget } from 'discourse/widgets/widget';
 import { h } from 'virtual-dom';
-import { ajax } from 'discourse/lib/ajax';
-import { getOwner } from 'discourse-common/lib/get-owner';
 import { getNinjas } from '../lib/get-ninjas';
-import {
-  default as discourseComputed,
-  observes,
-  on
-} from "discourse-common/utils/decorators";
-import { alias, and, equal, not } from "@ember/object/computed";
-import { inject } from "@ember/controller";
-import RawHtml from 'discourse/widgets/raw-html';
-import hbs from 'discourse/widgets/hbs-compiler';
 import { avatarImg } from "discourse/widgets/post";
 import { formatUsername } from "discourse/lib/utilities";
 
@@ -44,7 +33,6 @@ export default createWidget('ninjas', {
       this.scheduleRerender();
     });
   },
-
 
   html(args, state) {
 
@@ -83,11 +71,11 @@ export default createWidget('ninjas', {
                   h("div.ninja-name", (ninja.name === ninja.username ? "-" : ninja.name)),
                   h("div.ninja-member-since", `${I18n.t('neo4j.widgets.ninjas.since')}: ${moment(ninja.first_seen).format("MMM Do YYYY")}`)
                 ]
-          )));
-          
+              )
+          ))
         })
       }
-    };
-    return h('div.ninjas', [h('h3',`${I18n.t('neo4j.widgets.ninjas.title')}`), h('div.ninjas-container', buffer)]);
+    }
+    return h('div.ninjas', [h('h3', I18n.t('neo4j.widgets.ninjas.title')), h('div.ninjas-container', buffer)]);
    }
 });

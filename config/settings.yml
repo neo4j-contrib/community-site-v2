@@ -22,3 +22,8 @@ plugins:
     default: ''
     type: category_list
     list_type: "compact"
+  neo4j_latest_announcements_number_of_entries:
+    client: false
+    default: 5
+    max: 10
+    min: 1

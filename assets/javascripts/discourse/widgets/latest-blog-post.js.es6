@@ -65,34 +65,34 @@ export default createWidget('latest-blog-post', {
 
     if (blogpost) {
           buffer = h("div.latest-blog-post-entry",
-            [h("h5",
-              h("a", {
-                  "attributes": {
-                    "href": `${blogpost.link}`,
-                    "rel": "noopener",
-                    "target":"_blank"
-                    }
-                },
-              h("span.latest-blog-post-title",
-                `${ unescapeHtml(blogpost.title.rendered)}` ))),
-              h("div.latest-blog-post-author-container",
+            [
+              h("h5",
                 h("a", {
                     "attributes": {
-                      "href": `${blogpost.authors_url}`,
+                      "href": blogpost.link,
                       "rel": "noopener",
                       "target":"_blank"
                       }
                   },
-                h("div.latest-blog-post-author-name",
-                        `${blogpost.authors_name}` ))),
-              h("div.latest-blog-post-date",
-                        `${moment(blogpost.date).format("MMM Do")}`),
-              //h("br"),
-              h("div.latest-blog-post-excerpt",
-                `${unescapeHtml(blogpost.excerpt.rendered)}`)
+                  h("span.latest-blog-post-title", unescapeHtml(blogpost.title.rendered))
+                )
+              ),
+              h("div.latest-blog-post-author-container",
+                h("a", {
+                    "attributes": {
+                      "href": blogpost.authors_url,
+                      "rel": "noopener",
+                      "target":"_blank"
+                      }
+                  },
+                  h("div.latest-blog-post-author-name", blogpost.authors_name)
+                )
+              ),
+              h("div.latest-blog-post-date", moment(blogpost.date).format("MMM Do")),
+              h("div.latest-blog-post-excerpt", unescapeHtml(blogpost.excerpt.rendered))
             ]
           )
         }
-    return h('div.latest-blog-post-inner', [h('h3',`${I18n.t('neo4j.widgets.blog_post.title')}`) ,buffer]);
-   }
+    return h('div.latest-blog-post-inner', [h('h3', I18n.t('neo4j.widgets.blog_post.title')) ,buffer]);
+  }
 });
