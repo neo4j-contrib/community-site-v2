@@ -27,3 +27,8 @@ plugins:
     default: 5
     max: 10
     min: 1
+  neo4j_useful_links:
+    client: true
+    default: "Main Site,https://neo4j.com|The Blog,https://neo4j.com/blog"
+    type: list
+    allow_any: true

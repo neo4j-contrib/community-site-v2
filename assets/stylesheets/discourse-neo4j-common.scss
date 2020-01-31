@@ -84,6 +84,10 @@ $neo4j-dark: black;
   grid-area: tweets;
 }
 
+.neo4j-home-grid-links {
+  grid-area: links;
+}
+
 .ninjas-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -131,6 +135,23 @@ $neo4j-dark: black;
 }
 
 .announcements-entry, .announcements-view-all {
+  width: 100%;
+  list-style-type: none;
+  border-bottom: solid #3333 1px;
+  padding: 5px 0  5px 5px;
+  a:link, a:visited {
+    color: $neo4j-dark;
+  };
+  a:hover {
+    color: $neo4j-pale-blue;
+  }
+}
+
+.useful-links-entry-title {
+  font-size: 12px;
+}
+
+.useful-links-entry {
   width: 100%;
   list-style-type: none;
   border-bottom: solid #3333 1px;
