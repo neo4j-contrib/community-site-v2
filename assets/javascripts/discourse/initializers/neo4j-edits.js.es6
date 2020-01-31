@@ -1,16 +1,17 @@
 import { setDefaultHomepage } from "discourse/lib/utilities";
 import { withPluginApi } from "discourse/lib/plugin-api";
+import { getOwner } from "@ember/application";
 
-var updateCookie = (api) => {
-  const path = window.location.pathname;
-  var location_cookie_value = ""
-  if (!(/^\/u\//.test(path)) && !(/^\/admin\//.test(path))) {
-    var location_cookie_value = window.location.href
-    $.cookie('neo4j_discourse_redirect', location_cookie_value, { expires: 1 });
-  }
-  let currentUser = api.getCurrentUser();
-  if(currentUser && location_cookie_value)  {
+var updateCookie = (container, api) => {
+  const currentUser = api.getCurrentUser();
+  const router = container.lookup("router:main");
+  const route = router.currentRouteName.split('.')[0];
+  const keepRecordFor = ['home', 'topic', 'discovery'];
+
+  if(currentUser)  {
     $.removeCookie('neo4j_discourse_redirect');
+  } else if (keepRecordFor.includes(route)) {
+    $.cookie('neo4j_discourse_redirect', window.location.href, { expires: 1 });
   }
 }
 
@@ -19,7 +20,7 @@ export default {
   initialize(container) {
     setDefaultHomepage('home');
     withPluginApi('0.8.31', (api) => {
-      api.onPageChange(() => updateCookie(api));
+      api.onPageChange(() => updateCookie(container, api));
     });
   }
 }
