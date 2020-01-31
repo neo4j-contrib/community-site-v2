@@ -17,3 +17,5 @@ en:
         ninjas:
           title: "Neo4j Ninjas of the Week"
           since: "Member since"
+        useful-links:
+          title: "Useful Links"
