@@ -23,12 +23,6 @@ after_initialize do
     end
   end
 
-
-  # require 'homepage_constraint'
-  # Discourse::Application.routes.prepend do
-  #   HomePageConstraint.new("home")
-  # end
-
   Discourse::Application.routes.append do
     mount ::DiscourseNeo4j::Engine, at: '/'
   end
@@ -48,9 +42,29 @@ after_initialize do
     get "/ninjas" => "ninjas#list"
   end
 
-  DiscourseEvent.on(:layouts_ready) do
-    DiscourseLayouts::WidgetHelper.add_widget('latest-blog-post', position: 'left', order: 'start')
-    DiscourseLayouts::WidgetHelper.add_widget('latest-tweet', position: 'left', order: 'start')
-    DiscourseLayouts::WidgetHelper.add_widget('latest-announcements', position: 'left', order: 'start')
+  UsersController.class_eval do
+    def perform_account_activation
+      raise Discourse::InvalidAccess.new if honeypot_or_challenge_fails?(params)
+
+      if @user = EmailToken.confirm(params[:token])
+        
+        # Log in the user unless they need to be approved
+        if Guardian.new(@user).can_access_forum?
+          @user.enqueue_welcome_message('welcome_user') if @user.send_welcome_message
+          log_on_user(@user)
+
+          destination_url = cookies[:neo4j_discourse_redirect]
+
+          cookies[:neo4j_discourse_redirect] = nil
+
+          return redirect_to(destination_url)
+        else
+          @needs_approval = true
+        end
+
+      else
+        flash.now[:error] = I18n.t('activation.already_done')
+      end
+    end
   end
 end
