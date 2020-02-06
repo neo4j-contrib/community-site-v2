@@ -19,3 +19,7 @@ en:
           since: "Member since"
         useful-links:
           title: "Useful Links"
+        community-content:
+          title: "Latest Community Content"
+        community-projects:
+          title: "Latest Community Projects"

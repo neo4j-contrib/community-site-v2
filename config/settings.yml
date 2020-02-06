@@ -23,10 +23,30 @@ plugins:
     type: category_list
     list_type: "compact"
   neo4j_latest_announcements_number_of_entries:
-    client: false
+    client: true
     default: 5
     max: 10
     min: 1
+  neo4j_community_content_category:
+    client: true
+    default: ''
+    type: category_list
+    list_type: "compact"
+  neo4j_community_content_number_of_entries:
+    client: true
+    default: 3
+    max: 3
+    min: 3
+  neo4j_community_projects_category:
+    client: true
+    default: ''
+    type: category_list
+    list_type: "compact"
+  neo4j_community_projects_number_of_entries:
+    client: true
+    default: 3
+    max: 3
+    min: 3
   neo4j_useful_links:
     client: true
     default: "Main Site,https://neo4j.com|The Blog,https://neo4j.com/blog"

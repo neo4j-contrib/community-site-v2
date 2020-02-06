@@ -34,6 +34,7 @@ $neo4j-dark: black;
 .neo4j-home-grid-main {
   display: grid;
   grid-area: main;
+  grid-gap: 20px;
   grid-template-columns: 1fr;
   grid-template-rows: auto auto auto auto auto;
   grid-template-areas:
@@ -41,6 +42,7 @@ $neo4j-dark: black;
    "ninjas"
    "featured"
    "help"
+   "community"
    "projects"
 }
 
@@ -68,7 +70,11 @@ $neo4j-dark: black;
   grid-area: help;
 }
 
-.neo4j-home-grid-projects {
+.neo4j-home-grid-community-content {
+  grid-area: community;
+}
+
+.neo4j-home-grid-community-projects {
   grid-area: projects;
 }
 
@@ -98,12 +104,12 @@ $neo4j-dark: black;
 .ninjas-entry {
   color: $neo4j-dark;   
   padding: 10px;
-    text-align: center;
-    box-shadow: 0px 2px 4px 2px rgb(138, 138, 138);
-    border-radius: 4px;
-    a {
-      color: $neo4j-dark;
-    }
+  text-align: center;
+  box-shadow: 0px 2px 4px 2px rgb(138, 138, 138);
+  border-radius: 4px;
+  a {
+    color: $neo4j-dark;
+  }
  }
 
  .ninja-name,.ninja-username {
@@ -117,6 +123,45 @@ $neo4j-dark: black;
  .featured-member-image img{
    width: 100%;
  }
+
+ .community-content-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 15px;
+  grid-template-areas: "ninja ninja ninja"
+}
+
+.community-content-entry {
+  color: $neo4j-dark;   
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0px 2px 4px 2px rgb(138, 138, 138);
+  border-radius: 4px;
+  a {
+    color: $neo4j-dark;
+  }
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: auto auto;
+  grid-template-rows: 2fr 3fr;
+  grid-template-areas: "cc-title cc-title"
+                       "cc-avatar cc-meta"
+}
+
+.community-content-avatar {
+  grid-area: cc-avatar;
+}
+
+.community-content-title {
+  grid-area: cc-title;
+  text-align: left;
+  color: $neo4j-dark;
+}
+
+.community-content-meta {
+  grid-area: cc-meta;
+  color: $neo4j-grey;
+}
 
 
 .wp-blog-posts-widget-entry-title {

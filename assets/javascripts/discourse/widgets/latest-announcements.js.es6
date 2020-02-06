@@ -1,6 +1,6 @@
 import { createWidget } from 'discourse/widgets/widget';
 import { h } from 'virtual-dom';
-import { getAnnouncementTopics } from '../lib/get-announcement-topics';
+import { getLatestTopics } from '../lib/get-latest-topics';
 
 export default createWidget('latest-announcements', {
   tagName: "div.latest-announcements",
@@ -20,7 +20,7 @@ export default createWidget('latest-announcements', {
 
     state.loading = true;
 
-    getAnnouncementTopics().then((result) => {
+    getLatestTopics(Discourse.SiteSettings.neo4j_latest_announcements_category,Discourse.SiteSettings.neo4j_latest_announcements_number_of_entries).then((result) => {
       if (result.length) {
           state.announcements = result;
       } else {
