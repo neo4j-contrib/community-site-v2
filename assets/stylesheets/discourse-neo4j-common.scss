@@ -228,6 +228,9 @@ $neo4j-dark: black;
   text-align: left;
   display: flex;
   align-items: center;
+  svg {
+    padding-right: 5px;
+  }
 }
 
 .community-content-posts {
@@ -236,12 +239,20 @@ $neo4j-dark: black;
   text-align: left;
   display: flex;
   align-items: center;
+  svg {
+    padding-right: 5px;
+  }
 }
 
 .community-content-views {
   grid-area: cc-meta-views;
   color: $neo4j-grey;
   text-align: left;
+  display: flex;
+  align-items: center;
+  svg {
+    padding-right: 5px;
+  }
 }
 
 .wp-blog-posts-widget-entry-title {
