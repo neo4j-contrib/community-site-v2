@@ -31,14 +31,11 @@ after_initialize do
   load File.expand_path('../controllers/wpblogposts.rb', __FILE__)
   load File.expand_path('../serializers/ninjas.rb', __FILE__)
   load File.expand_path('../controllers/ninjas.rb', __FILE__)
-  load File.expand_path('../serializers/latest_topics.rb', __FILE__)
-  load File.expand_path('../controllers/latest_topics.rb', __FILE__)
 
   ::DiscourseNeo4j::Engine.routes.draw do
     get "/wplatestblogpost" => "wpblogposts#latest_post"
     get "/wpblogauthor" => "wpblogposts#author"
     get "/wpfeaturedmember" => "wpblogposts#featured_member"
-    get "/latest_topics" => "latest_topics#topics"
     get "/ninjas" => "ninjas#list"
   end
 

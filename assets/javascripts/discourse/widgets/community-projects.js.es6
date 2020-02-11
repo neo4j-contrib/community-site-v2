@@ -12,6 +12,7 @@ export default createWidget('community-projects', {
   defaultState() {
     return {
       topics: null,
+      users: null,
       loaded: false,
       loading: false
     };
@@ -23,11 +24,13 @@ export default createWidget('community-projects', {
 
     state.loading = true;
 
-    getLatestTopics(Discourse.SiteSettings.neo4j_community_projects_category,Discourse.SiteSettings.neo4j_community_projects_number_of_entries).then((result) => {
-      if (result.length) {
-          state.topics = result
+    getLatestTopics(Discourse.SiteSettings.neo4j_community_projects_category).then((result) => {
+      if (result.topic_list) {
+          state.topics = result.topic_list.topics.slice(0,Discourse.SiteSettings.neo4j_community_projects_number_of_entries);
+          state.users = result.users
       } else {
         state.topics = [];
+        state.users = [];
       }
       state.loading = false;
       state.loaded = true;
@@ -47,6 +50,7 @@ export default createWidget('community-projects', {
 
     var buffer = [];
     var topics = state.topics;
+    var users = state.users;
 
     if (topics !== null) {
       if (topics.length > 0) {
@@ -63,27 +67,36 @@ export default createWidget('community-projects', {
               },
                 [
                   h("div.community-content-avatar",
-                    avatarImg("large", {
-                      template: topic.avatar_template,
-                      username: formatUsername(topic.username)
+                    avatarImg("medium", {
+                      template: users.find(({ id }) => id === topic.posters[0].user_id).avatar_template,
+                      username: formatUsername(users.find(({ id }) => id === topic.posters[0].user_id).username)
                     })
                   ),
-                  h("div.community-content-title", topic.title),
-                  h("div.community-content-meta", 
                   [
-                    h("div.topic-likes-count",[iconNode("far-heart"),
+                    h("div.community-content-title", topic.title),
+                    h("div.community-content-likes",[iconNode("far-heart"),
                     " ", topic.like_count]),
-                    h("div.topic-post-count", [iconNode("far-comment"),
-                    " ", topic.posts_count]),
-                    h("div.topic-views", [iconNode("far-eye"),
+                    h("div.community-content-posts", [iconNode("far-comment"),
+                    " ", topic.posts_count - 1]),
+                    h("div.community-content-views", [iconNode("far-eye"),
                     " ", topic.views])
-                ])
+                  ]
                 ]
               )
           )
         })
       }
     }
-    return h('div.community-projects', [h('h3', I18n.t('neo4j.widgets.community-projects.title')), h('div.community-content-container', buffer)]);
+    return h('div.community-projects', [
+      h('div.community-projects-header', [
+        h('h3.community-projects-title', I18n.t('neo4j.widgets.community-projects.title')),
+        h('a.community-projects-main-link', {
+          "attributes": {
+            "href": `/c/${Discourse.SiteSettings.neo4j_community_projects_category}`
+          }
+        }, I18n.t('neo4j.widgets.community-projects.link-text'))
+      ]),
+      h('div.community-projects-container', buffer)
+    ]);
    }
 });
