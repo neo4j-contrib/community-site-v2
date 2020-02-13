@@ -288,3 +288,46 @@ $neo4j-dark: black;
     color: $neo4j-pale-blue;
   }
 }
+
+// for category topic list
+.neo-avatar-large {
+  display: inline !important;
+  margin-right: 5px;
+  margin-bottom: 10px;
+  // vertical-align: middle;
+  margin: 0 auto;
+  height: 100px;
+}
+
+.neo-link-top-line {
+  display: inline !important;
+  // vertical-align: middle;
+  // margin-left: 100px;
+  vertical-align: top;
+}
+
+.neo-link-bottom-line {
+  // margin-left: 200px;
+  margin: auto 0;
+  display: inline-flex !important;
+  margin-left: 50px;
+  display: block;
+}
+
+.neo-raw-topic-link {
+  // margin-left: 20px;
+  display: inline !important;
+}
+
+
+div.neo-link-bottom-line > a > span.badge-category.clear-badge {
+   display: none;
+}
+
+.neo-topic-title {
+  font-weight: 600;
+}
+
+.neo-posters>a {
+  margin-right: -20px !important;
+}
