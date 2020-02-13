@@ -18,7 +18,7 @@ export default {
 const topicListItemEdits = (api) => {
   api.modifyClass("component:topic-list-item", {
     routing:service("-routing"),
-    poster: alias("topic.lastPoster"), 
+    poster: alias("topic.creator"), 
     @discourseComputed('poster')
     rendered(poster){
       return renderAvatar(poster, {imageSize: "extra_large"})
@@ -33,6 +33,13 @@ const topicListItemEdits = (api) => {
           this.set("topicListItemContents", template(this).htmlSafe());
         }
       }
+    },
+    replyCount: alias('topic.replyCount'),
+
+    @on('didInsertElement')
+    check(){
+      // console.log(this.get('topic.replyCount'));
+      // debugger;
     }
   });
 
@@ -46,6 +53,8 @@ const topicListItemEdits = (api) => {
           this.$('.posts.sortable.num').hide();
           this.$('.views.sortable.num').hide();
           this.$('.activity.sortable.num').hide();
+          this.$('td.posters').css('vertical-align', 'bottom');
+          this.$('img.avatar').css('margin-left', '-20px');
           
         });
       }

@@ -17,7 +17,8 @@
   <div class="neo-avatar-large">
   {{{rendered}}}
   </div>
-
+    <div class="neo-reply-count">{{replyCount}}</div>
+    
   <div class='link-top-line neo-link-top-line'>
     <div class="neo-link-bottom-line">
     {{#unless hideCategory}}
@@ -41,8 +42,6 @@
     {{~#if showTopicPostBadges}}
     {{~raw "topic-post-badges" unread=topic.unread newPosts=topic.displayNewPosts unseen=topic.unseen url=topic.lastUnreadUrl newDotText=newDotText}}
     {{~/if}}
-
-     {{!-- <h1>wifj</h1> --}}
   </div>
  
  
@@ -52,8 +51,10 @@
 </td>
 
 {{#if showPosters}}
-  {{raw "custom-posters-column" posters=topic.featuredUsers}}
+  {{raw "list/posters-column" posters=topic.featuredUsers}}
 {{/if}}
+
+
 
 {{!-- {{raw "list/posts-count-column" topic=topic}}
 
