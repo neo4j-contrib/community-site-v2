@@ -19,9 +19,14 @@ const topicListItemEdits = (api) => {
   api.modifyClass("component:topic-list-item", {
     routing:service("-routing"),
     poster: alias("topic.creator"), 
+    lastPosterName: alias('topic.lastPoster.username'),
     @discourseComputed('poster')
     rendered(poster){
       return renderAvatar(poster, {imageSize: "extra_large"})
+    },
+    @discourseComputed('topic.last_posted_at')
+    lastPostedAt(postedAt){
+      return moment(postedAt).fromNow();
     },
     @observes("topic.pinned")
     renderTopicListItem() {
@@ -37,9 +42,10 @@ const topicListItemEdits = (api) => {
     replyCount: alias('topic.replyCount'),
 
     @on('didInsertElement')
-    check(){
-      // console.log(this.get('topic.replyCount'));
-      // debugger;
+    applyMods(){
+      if(["discovery.category", "discovery.categoryWithID", "discovery.categoryNone"].includes(this.get("routing.currentRouteName"))) {
+        this.$().addClass('neo-topic-list-item');
+      }
     }
   });
 
@@ -54,10 +60,25 @@ const topicListItemEdits = (api) => {
           this.$('.views.sortable.num').hide();
           this.$('.activity.sortable.num').hide();
           this.$('td.posters').css('vertical-align', 'bottom');
-          this.$('img.avatar').css('margin-left', '-20px');
-          
+          this.$('td.posters>a').css('margin-left', '-20px');
+          this.$().css('border-collapse', 'separate');
+          this.$().css('border-spacing', '0 1em');
         });
       }
     }
   });
+
+  api.modifyClass('component:navigation-bar', {
+    routing: service('-routing'),
+    
+    @on('didReceiveAttrs')
+    changeTemplate() {
+      if(/[a-z]*(c|C)ategory/.test(this.routing.currentRouteName)) {
+        const layout = api._lookupContainer('template:mobile/components/navigation-bar');
+        this.set('layout', layout);
+      }
+    }
+
+  });
+
 }

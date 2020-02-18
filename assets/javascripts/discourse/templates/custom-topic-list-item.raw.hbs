@@ -14,10 +14,12 @@
 --}}
 <td class='main-link clearfix' colspan="1">
  
+
   <div class="neo-avatar-large">
   {{{rendered}}}
   </div>
-    <div class="neo-reply-count">{{replyCount}}</div>
+
+   
     
   <div class='link-top-line neo-link-top-line'>
     <div class="neo-link-bottom-line">
@@ -28,13 +30,20 @@
     {{/unless}}
     {{discourse-tags topic mode="list" tagsForUser=tagsForUser}}
     {{raw "list/action-list" topic=topic postNumbers=topic.liked_post_numbers className="likes" icon="heart"}}
+    
   </div>
+
     {{~raw-plugin-outlet name="topic-list-before-status"}}
     {{~raw "topic-status" topic=topic}}
     {{~topic-link topic class="neo-topic-title raw-link neo-raw-topic-link"}}
     {{~#if topic.featured_link}}
     {{~topic-featured-link topic}}
     {{~/if}}
+
+    <div class="neo-last-post">
+        <span>Last reply by {{lastPosterName}} {{lastPostedAt}}</span>
+    </div>
+
     {{~raw-plugin-outlet name="topic-list-after-title"}}
     {{~raw "list/unread-indicator" includeUnreadIndicator=includeUnreadIndicator 
                                    topicId=topic.id 
@@ -42,18 +51,22 @@
     {{~#if showTopicPostBadges}}
     {{~raw "topic-post-badges" unread=topic.unread newPosts=topic.displayNewPosts unseen=topic.unseen url=topic.lastUnreadUrl newDotText=newDotText}}
     {{~/if}}
+
+     
   </div>
+   <div class="neo-reply-count">{{replyCount}} Replies</div>
+
  
  
   {{#if expandPinned}}
     {{raw "list/topic-excerpt" topic=topic}}
   {{/if}}
+
 </td>
 
 {{#if showPosters}}
   {{raw "list/posters-column" posters=topic.featuredUsers}}
 {{/if}}
-
 
 
 {{!-- {{raw "list/posts-count-column" topic=topic}}
