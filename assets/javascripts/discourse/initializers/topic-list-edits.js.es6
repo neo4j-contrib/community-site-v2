@@ -41,10 +41,19 @@ const topicListItemEdits = (api) => {
     },
     replyCount: alias('topic.replyCount'),
 
+    @on('didReceiveAttrs')
+    showExcerpt() {
+      if(["discovery.category", "discovery.categoryWithID", "discovery.categoryNone"].includes(this.get("routing.currentRouteName"))) {
+        this.set('expandPinned', true);
+      }
+
+    },
     @on('didInsertElement')
     applyMods(){
       if(["discovery.category", "discovery.categoryWithID", "discovery.categoryNone"].includes(this.get("routing.currentRouteName"))) {
         this.$().addClass('neo-topic-list-item');
+        this.$('.topic-excerpt').addClass('neo-topic-excerpt');
+
       }
     }
   });
