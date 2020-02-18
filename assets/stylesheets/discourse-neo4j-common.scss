@@ -288,3 +288,39 @@ $neo4j-dark: black;
     color: $neo4j-pale-blue;
   }
 }
+
+// search banner mods
+
+.custom-search-banner {
+  background: -webkit-linear-gradient(left, #77c1f4, #6cc99b);
+}
+
+.custom-search-banner-wrap h1 {
+  color: #ffffff;
+}
+
+.custom-search-banner-wrap .search-menu input[type="text"] {
+  border-radius: 5px;
+  height: 45px;
+}
+
+.custom-search-banner-wrap .search-icon {
+  right: auto !important;
+  padding: 15px 12px !important;
+}
+
+.custom-search-banner-wrap .search-menu input[type="text"]::-webkit-input-placeholder {
+ text-indent: 20px;
+}
+
+.custom-search-banner-wrap .search-menu input[type="text"]::-moz-placeholder {
+  text-indent: 20px;
+ }
+
+ .custom-search-banner-wrap .search-menu input[type="text"]:-ms-input-placeholder {
+  text-indent: 20px;
+ }
+
+ .custom-search-banner-wrap .search-menu input[type="text"]:-moz-placeholder  {
+  text-indent: 20px;
+ }

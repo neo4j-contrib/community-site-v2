@@ -21,6 +21,17 @@ export default {
     setDefaultHomepage('home');
     withPluginApi('0.8.31', (api) => {
       api.onPageChange(() => updateCookie(container, api));
+
+      api.reopenWidget('search-term', {
+        buildAttributes(attrs) {
+          return {
+            type: "text",
+            value: attrs.value || "",
+            autocomplete: "discourse",
+            placeholder: I18n.t("neo4j.search-placeholder-text")
+          };
+        }
+      });
     });
   }
 }
