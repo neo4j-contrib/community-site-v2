@@ -20,3 +20,12 @@ en:
         useful-links:
           title: "Useful Links"
       search-placeholder-text: "Search the community"
+        can-you-help:
+          title: "Can you help these nodes?"
+          link-text: "View all >>"
+        community-content:
+          title: "Latest Community Content"
+          link-text: "View all >>"
+        community-projects:
+          title: "Latest Community Projects"
+          link-text: "View all >>"
