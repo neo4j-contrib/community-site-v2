@@ -8,4 +8,8 @@ en:
     neo4j_blog_post_filter_tag_id: "Latest blog post widget: Numerical tag id to filter for latest appropriate highlighted post"
     neo4j_latest_announcements_category: "Category from which the Latest Announcements widget gets its feed"
     neo4j_latest_announcements_number_of_entries: "Number of entries in Latest Announcements widget"
+    neo4j_community_content_category: "Category from which the Community Content widget gets its feed"
+    neo4j_community_content_number_of_entries: "Number of entries in Community Content widget"
+    neo4j_community_projects_category: "Category from which the Community Projects widget gets its feed"
+    neo4j_community_projects_number_of_entries: "Number of entries in Community Projects widget"
     neo4j_useful_links: "Links that appear in Useful Links widget.  Each must be comma separated of format link-title,link-url to work."

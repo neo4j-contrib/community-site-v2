@@ -19,3 +19,13 @@ en:
           since: "Member since"
         useful-links:
           title: "Useful Links"
+        can-you-help:
+          title: "Can you help these nodes?"
+          link-text: "View all >>"
+        community-content:
+          title: "Latest Community Content"
+          link-text: "View all >>"
+        community-projects:
+          title: "Latest Community Projects"
+          link-text: "View all >>"
+      search-placeholder-text: "Search the community"
