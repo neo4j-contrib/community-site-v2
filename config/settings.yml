@@ -30,6 +30,11 @@ plugins:
   neo4j_can_you_help_search_criteria:
     client: true
     default: 'q=status%3Anoreplies%20after%3A14%20-tags%3Aknowledge-base%20in%3Aunseen%20order%3Alatest'
+  neo4j_can_you_help_number_of_entries:
+    client: true
+    default: 6
+    min: 6
+    max: 6
   neo4j_community_content_category:
     client: true
     default: ''
@@ -50,11 +55,6 @@ plugins:
     default: 3
     max: 3
     min: 3
-  neo4j_can_you_help_number_of_entries:
-    client: true
-    default: 6
-    min: 6
-    max: 6
   neo4j_useful_links:
     client: true
     default: "Main Site,https://neo4j.com|The Blog,https://neo4j.com/blog"
