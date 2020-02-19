@@ -19,7 +19,6 @@ en:
           since: "Member since"
         useful-links:
           title: "Useful Links"
-      search-placeholder-text: "Search the community"
         can-you-help:
           title: "Can you help these nodes?"
           link-text: "View all >>"
@@ -29,3 +28,4 @@ en:
         community-projects:
           title: "Latest Community Projects"
           link-text: "View all >>"
+      search-placeholder-text: "Search the community"
