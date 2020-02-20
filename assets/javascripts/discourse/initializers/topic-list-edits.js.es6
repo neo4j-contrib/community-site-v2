@@ -65,13 +65,16 @@ const topicListItemEdits = (api) => {
       if(["discovery.category", "discovery.categoryWithID", "discovery.categoryNone"].includes(this.get("routing.currentRouteName"))) {
         schedule("afterRender", () => {
           // apply mods to be applied specifically category topic lists 
+          this.$().css('width','85%');
           this.$('.posts.sortable.num').hide();
           this.$('.views.sortable.num').hide();
           this.$('.activity.sortable.num').hide();
-          this.$('td.posters').css('vertical-align', 'bottom');
-          this.$('td.posters>a').css('margin-left', '-20px');
           this.$().css('border-collapse', 'separate');
           this.$().css('border-spacing', '0 1em');
+          this.$('.posters').addClass('neo-posters');
+          $('#navigation-bar').appendTo('.category-navigation');
+          $('#navigation-bar').css('float', 'right');
+
         });
       }
     }

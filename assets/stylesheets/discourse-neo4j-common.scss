@@ -461,14 +461,19 @@ div.neo-link-bottom-line > a > span.badge-category.clear-badge {
   font-weight: 600;
 }
 
+.neo-posters {
+  vertical-align: bottom;
+  margin-top: 30px;
+}
+
 .neo-posters>a {
-  margin-right: -20px !important;
+  margin-left: -20px !important;
 }
 
 .neo-reply-count {
-  float: right;
   vertical-align: top;
-  font-size: $font-down-1;
+  margin-top: 35px;
+  // font-size: $font-down-1;
 }
 
 .neo-new-topic-button {
@@ -483,8 +488,8 @@ div.neo-link-bottom-line > a > span.badge-category.clear-badge {
 }
 
 .neo-topic-list-item {
-box-shadow: 0px 2px 4px  2px rgba(138,138,138,0.25);
-border-radius: 4px;
+  box-shadow: 0px 2px 4px  2px rgba(138,138,138,0.25);
+  border-radius: 4px;
 }
 
 .neo-topic-excerpt {
@@ -529,4 +534,57 @@ border-radius: 4px;
  .custom-search-banner-wrap .search-menu input[type="text"]  {
   text-indent: 20px;
  }
+
+ .neo-category-sidebar {
+  grid-template-columns: 78% 20%;
+  grid-template-areas:
+        "head sidebar"
+        "body sidebar";
+ }
+
  
+ 
+ .nav-pills {
+  display: flex;
+  flex: 1 1 auto;
+  margin: 0 3px 5px 3px;
+  position: relative;
+  .navigation-toggle {
+    flex: 0 1 auto;
+    margin-bottom: 5px;
+  }
+  > li {
+    margin-right: 0;
+    font-size: $font-down-1;
+    border: 1px solid $primary-medium;
+  }
+  > li > a {
+    line-height: $line-height-large;
+    display: flex;
+    align-items: center;
+    .d-icon {
+      margin-left: 5px;
+    }
+  }
+  .drop {
+    border: 1px solid $primary-low;
+    position: absolute;
+    z-index: z("dropdown") - 1;
+    background-color: $secondary;
+    padding: 0 10px 10px 10px;
+    width: 150px;
+    top: 100%;
+    margin: 0;
+    left: 0; // iOS6 alignment
+    li {
+      list-style-type: none;
+      margin-left: 0;
+      margin-top: 5px;
+      padding-top: 10px;
+      a {
+        width: 100%;
+        display: inline-block;
+      }
+    }
+  }
+}
