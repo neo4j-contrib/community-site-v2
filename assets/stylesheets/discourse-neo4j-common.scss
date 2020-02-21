@@ -535,20 +535,19 @@ div.neo-link-bottom-line > a > span.badge-category.clear-badge {
   text-indent: 20px;
  }
 
- .neo-category-sidebar {
-  grid-template-columns: 78% 20%;
-  grid-template-areas:
-        "head sidebar"
-        "body sidebar";
- }
+.neo-topic-list>thead {
+    display: none !important;
+  }
+
 
  
  
- .nav-pills {
+ .neo-nav-pills {
   display: flex;
   flex: 1 1 auto;
   margin: 0 3px 5px 3px;
   position: relative;
+  float: right !important;
   .navigation-toggle {
     flex: 0 1 auto;
     margin-bottom: 5px;
@@ -588,3 +587,94 @@ div.neo-link-bottom-line > a > span.badge-category.clear-badge {
     }
   }
 }
+@import "common/foundation/variables";
+// test css
+@media screen and (min-width: 767px) {
+  // Show the sidebar at 767px
+  .custom-sidebar {
+    &.sidebar-right .contents > .topic-list {
+      grid-template-columns: 78% 20%;
+      @media screen and (max-width: 900px) {
+        grid-template-columns: 73% 25%;
+      }
+      grid-template-areas:
+        "body sidebar"
+        "body sidebar";
+    }
+
+    .contents > .topic-list {
+      display: grid;
+      grid-column-gap: 2%;
+      align-items: start;
+      grid-template-rows: 50px auto;
+
+      thead {
+        grid-area: head;
+        display: table;
+        align-self: end;
+      }
+      > .neo-category-sidebar {
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        margin-top: 15px;
+        grid-area: sidebar;
+        order: 3;
+        padding: 0;
+        position: relative;
+        // @if $stick-on-scroll == "true" {
+          position: sticky;
+          top: 80px;
+          // max-height: 70vh;
+          @media screen and (max-height: 925px) {
+            // max-height: 55vh;
+          }
+          overflow-y: auto;
+        // }
+        .cooked {
+          img,
+          video,
+          iframe {
+            width: 100%;
+            height: auto;
+          }
+          img.emoji {
+            width: 20px;
+          }
+          ul,
+          ol {
+            padding-left: 30px;
+          }
+        }
+      }
+      tbody {
+        grid-area: body;
+        display: table;
+        border-top: unset;
+      }
+    }
+  }
+}
+
+.neo-create-topic {
+  background-color: #6cc99c !important;
+  color: #ffffff;
+  width: 99%;
+  height: 60px;
+  border-radius: 4px;
+  box-shadow: 0px 2px 4px 2px rgba(138, 138, 138, 0.25);
+  > svg {
+    display: none;
+  }
+}
+
+.neo-category-list {
+  list-style-type: none;
+  overflow-y: auto;
+  height: 100%;
+}
+
+.neo-category-link {
+  margin: 0 0 25px 0;
+}
+

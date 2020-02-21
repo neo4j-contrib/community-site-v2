@@ -7,6 +7,7 @@ import discourseComputed from "discourse-common/utils/decorators";
 import { schedule } from "@ember/runloop";
 import { inject as service } from "@ember/service";
 import { findRawTemplate } from "discourse/lib/raw-templates";
+import hbs from 'discourse/widgets/hbs-compiler';
 
 export default {
   name: 'topic-list-item-edits',
@@ -64,16 +65,18 @@ const topicListItemEdits = (api) => {
     applyCSS(){
       if(["discovery.category", "discovery.categoryWithID", "discovery.categoryNone"].includes(this.get("routing.currentRouteName"))) {
         schedule("afterRender", () => {
-          // apply mods to be applied specifically category topic lists 
-          this.$().css('width','85%');
-          this.$('.posts.sortable.num').hide();
-          this.$('.views.sortable.num').hide();
-          this.$('.activity.sortable.num').hide();
+          this.$().addClass('neo-topic-list');
           this.$().css('border-collapse', 'separate');
           this.$().css('border-spacing', '0 1em');
           this.$('.posters').addClass('neo-posters');
           $('#navigation-bar').appendTo('.category-navigation');
-          $('#navigation-bar').css('float', 'right');
+          $('#navigation-bar').addClass('neo-nav-pills');
+          $('#create-topic').prependTo('.neo-category-sidebar');
+          $('#create-topic').addClass('neo-create-topic');
+          $('#create-topic > .d-button-label').html(I18n.t('neo4j.neo-create-topic-text'));
+          document.querySelector("body").classList.add("custom-sidebar", "sidebar-right");
+          document.querySelector(".topic-list").classList.add("with-sidebar", 'right');
+          
 
         });
       }
@@ -90,6 +93,17 @@ const topicListItemEdits = (api) => {
         this.set('layout', layout);
       }
     }
+
+  });
+
+  api.createWidget('neo-category-list', {
+    tagName:"ul.neo-category-list",
+    template: hbs`
+        {{#each attrs as |category|}}
+        <li class="neo-category-link">{{category-link category=category}}</li>
+      {{/each}}
+      {{!-- {{log attrs.categories}} --}}
+      `,
 
   });
 
