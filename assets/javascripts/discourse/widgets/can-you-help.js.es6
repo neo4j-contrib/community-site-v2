@@ -88,7 +88,7 @@ export default createWidget('can-you-help', {
         h('h3.can-you-help-title', I18n.t('neo4j.widgets.can-you-help.title')),
         h('a.can-you-help-main-link', {
           "attributes": {
-            "href": `/search.json?${Discourse.SiteSettings.neo4j_can_you_help_search_criteria}`
+            "href": `/search?${Discourse.SiteSettings.neo4j_can_you_help_search_criteria}`
           }
         }, I18n.t('neo4j.widgets.can-you-help.link-text'))
       ]),
