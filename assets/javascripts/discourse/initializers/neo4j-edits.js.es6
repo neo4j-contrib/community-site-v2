@@ -33,5 +33,8 @@ export default {
         }
       });
     });
+    $('.tabset input:radio:first').ready(function() {
+      $(".tabset input:radio:first").click();
+    });
   }
 }
