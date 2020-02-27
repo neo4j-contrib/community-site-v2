@@ -29,9 +29,13 @@ const topicListItemEdits = (api) => {
     lastPostedAt(postedAt){
       return moment(postedAt).fromNow();
     },
+    @discourseComputed('routing.currentRouteName')
+    isCategoryTopicList(currentRouteName) {
+      return /discovery.[a-zA-Z]*(c|C)ategory[a-zA-Z]*/.test(currentRouteName);
+    },
     @observes("topic.pinned")
     renderTopicListItem() {
-      if(!["discovery.category", "discovery.categoryWithID", "discovery.categoryNone"].includes(this.get("routing.currentRouteName"))) {
+      if(!this.get('isCategoryTopicList')) {
         this._super(...arguments);
       } else {
         const template = findRawTemplate("custom-topic-list-item");
@@ -41,17 +45,10 @@ const topicListItemEdits = (api) => {
       }
     },
     replyCount: alias('topic.replyCount'),
-
-    @on('didReceiveAttrs')
-    showExcerpt() {
-      if(["discovery.category", "discovery.categoryWithID", "discovery.categoryNone"].includes(this.get("routing.currentRouteName"))) {
-        this.set('expandPinned', true);
-      }
-
-    },
+    expandPinned: alias('isCategoryTopicList'),
     @on('didInsertElement')
     applyMods(){
-      if(["discovery.category", "discovery.categoryWithID", "discovery.categoryNone"].includes(this.get("routing.currentRouteName"))) {
+      if(this.get('isCategoryTopicList')) {
         this.$().addClass('neo-topic-list-item');
         this.$('.topic-excerpt').addClass('neo-topic-excerpt');
 
@@ -61,13 +58,17 @@ const topicListItemEdits = (api) => {
 
   api.modifyClass('component:topic-list', {
     routing:service("-routing"),
+    @discourseComputed('routing.currentRouteName')
+    isCategoryTopicList(currentRouteName) {
+      return /discovery.[a-zA-Z]*(c|C)ategory[a-zA-Z]*/.test(currentRouteName);
+    },
     @on('didRender')
     applyCSS(){
-      if(["discovery.category", "discovery.categoryWithID", "discovery.categoryNone"].includes(this.get("routing.currentRouteName"))) {
+      if(this.get('isCategoryTopicList')) {
         schedule("afterRender", () => {
           this.$().addClass('neo-topic-list');
-          this.$().css('border-collapse', 'separate');
-          this.$().css('border-spacing', '0 1em');
+          // this.$().css('border-collapse', 'separate');
+          // this.$().css('border-spacing', '0 1em');
           this.$('.posters').addClass('neo-posters');
           $('#navigation-bar').appendTo('.category-navigation');
           $('#navigation-bar').addClass('neo-nav-pills');
@@ -80,15 +81,20 @@ const topicListItemEdits = (api) => {
 
         });
       }
-    }
+    },
+
   });
 
   api.modifyClass('component:navigation-bar', {
     routing: service('-routing'),
+    @discourseComputed('routing.currentRouteName')
+    isCategoryTopicList(currentRouteName) {
+      return /discovery.[a-zA-Z]*(c|C)ategory[a-zA-Z]*/.test(currentRouteName);
+    },
     
     @on('didReceiveAttrs')
     changeTemplate() {
-      if(/[a-z]*(c|C)ategory/.test(this.routing.currentRouteName)) {
+      if(this.get('isCategoryTopicList')) {
         const layout = api._lookupContainer('template:mobile/components/navigation-bar');
         this.set('layout', layout);
       }
