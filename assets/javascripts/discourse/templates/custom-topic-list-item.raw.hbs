@@ -41,7 +41,7 @@
     {{~/if}}
 
     <div class="neo-last-post">
-        <span>Last reply by {{lastPosterName}} {{lastPostedAt}}</span>
+        <span>{{d-icon 'reply'}} {{i18n 'neo4j.neo-last-reply-by-text'}} {{lastPosterName}} {{lastPostedAt}}</span>
     </div>
 
     {{~raw-plugin-outlet name="topic-list-after-title"}}

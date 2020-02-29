@@ -72,7 +72,7 @@ const topicListItemEdits = (api) => {
           this.$('.posters').addClass('neo-posters');
           $('#navigation-bar').appendTo('.category-navigation');
           $('#navigation-bar').addClass('neo-nav-pills');
-          $('#create-topic').prependTo('.neo-category-sidebar');
+          $('#create-topic').prependTo('.category-navigation');
           $('#create-topic').addClass('neo-create-topic');
           $('#create-topic > .d-button-label').html(I18n.t('neo4j.neo-create-topic-text'));
           document.querySelector("body").classList.add("custom-sidebar", "sidebar-right");
