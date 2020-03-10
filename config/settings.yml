@@ -55,7 +55,47 @@ plugins:
     default: 3
     max: 3
     min: 3
+  neo4j_meet_new_members_category:
+    client: true
+    default: ''
+    type: category_list
+    list_type: "compact"
+  neo4j_meet_new_members_number_of_entries:
+    client: true
+    default: 3
+    max: 3
+    min: 3
+  neo4j_certified_devs_group:
+    client: true
+    default: ''
+    type: group_list
+    list_type: "compact"
+  neo4j_certified_devs_number_of_entries:
+    client: true
+    default: 3
+    max: 3
+    min: 3
   neo4j_useful_links:
+    client: true
+    default: "Main Site,https://neo4j.com|The Blog,https://neo4j.com/blog"
+    type: list
+    allow_any: true
+  neo4j_graph_gear_store_links:
+    client: true
+    default: "Main Site,https://neo4j.com|The Blog,https://neo4j.com/blog"
+    type: list
+    allow_any: true
+  neo4j_jobs_links:
+    client: true
+    default: "Main Site,https://neo4j.com|The Blog,https://neo4j.com/blog"
+    type: list
+    allow_any: true
+  neo4j_newbie_links:
+    client: true
+    default: "Main Site,https://neo4j.com|The Blog,https://neo4j.com/blog"
+    type: list
+    allow_any: true
+  neo4j_share_feedback_links:
     client: true
     default: "Main Site,https://neo4j.com|The Blog,https://neo4j.com/blog"
     type: list

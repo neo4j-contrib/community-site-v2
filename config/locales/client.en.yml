@@ -28,4 +28,10 @@ en:
         community-projects:
           title: "Latest Community Projects"
           link-text: "View all >>"
+        meet-new-members:
+          title: "Meet The New Members"
+          link-text: "View all >>"
+        certified-devs:
+          title: "Certified Developers"
+          since: "Certified since"
       search-placeholder-text: "Search the community"
