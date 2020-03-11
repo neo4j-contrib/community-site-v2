@@ -28,6 +28,10 @@ $neo4j-dark: black;
    "announce"
    "blog"
    "tweets"
+   "newbie"
+   "store"
+   "jobs"
+   "feedback"
    "links"
    "whitespace"
 }
@@ -100,9 +104,25 @@ $neo4j-dark: black;
   grid-area: links;
 }
 
+.neo4j-home-grid-neo4j-newbie {
+  grid-area: newbie
+}
+
+.neo4j-home-grid-graph-gear-store {
+  grid-area: store
+}
+
+.neo4j-home-grid-jobs {
+  grid-area: jobs
+}
+
+.neo4j-home-grid-share-feedback {
+  grid-area: feedback
+}
+
 .neo4j-home-grid-sidebar-spacer {
   grid-area: whitespace;
-  min-height: 400px;
+  min-height: 200px;
 }
 
 .ninjas-container, .certified-devs-container {

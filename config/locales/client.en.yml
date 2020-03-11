@@ -17,6 +17,14 @@ en:
         ninjas:
           title: "Neo4j Ninjas of the Week"
           since: "Member since"
+        neo4j-newbie-links:
+          title: "Neo4j Newbie"
+        graph-gear-store-links:
+          title: "Graph Gear Store"
+        jobs-links:
+          title: "Jobs"
+        share-feedback-links:
+          title: "Share Feedback"
         useful-links:
           title: "Useful Links"
         can-you-help:

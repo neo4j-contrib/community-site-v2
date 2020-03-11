@@ -8,6 +8,6 @@ export default createWidget('share-feedback-links', {
   html() {
     var shareFeedbackLinks = Discourse.SiteSettings.neo4j_share_feedback_links.split('|');
 
-    return formatLinkSet (shareFeedbackLinks, "neo4j.neo4j_share_feedbackack-links.title");
+    return formatLinkSet (shareFeedbackLinks, "neo4j.widgets.share-feedback-links.title");
   }
 });
