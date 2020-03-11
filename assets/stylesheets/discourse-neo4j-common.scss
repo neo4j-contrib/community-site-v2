@@ -334,6 +334,23 @@ $neo4j-dark: black;
   }
 }
 
+.link-set {
+  border: solid 1px;
+  border-radius: 3px;
+  color: $neo4j-grey;
+  h3 {
+    padding: 5px;
+    color: white;
+    background-color: $neo4j-grey;
+    margin-bottom: -2px;
+  }
+}
+
+.link-set-list-container {
+  border: solid 1px;
+  color: $neo4j-grey;
+}
+
 .link-set-entry-title {
   font-size: 12px;
 }
@@ -341,14 +358,27 @@ $neo4j-dark: black;
 .link-set-entry {
   width: 100%;
   list-style-type: none;
-  border-bottom: solid #3333 1px;
   padding: 5px 0  5px 5px;
-  a:link, a:visited {
-    color: $neo4j-dark;
+
+  a:link, a:visited  {
+    display: block;
+      color: white;
+      background-color: $neo4j-pale-blue;
+      font-weight: bold;
+      padding: 6px;
+      margin-right: 10px;
+      border-radius:5px;
   };
+
   a:hover {
-    color: $neo4j-pale-blue;
-  }
+    display: block;
+    color: $neo4j-dark;
+    background-color: $neo4j-green;
+    font-weight: bold;
+    padding: 6px;
+    margin-right: 10px;
+    border-radius:5px;
+ }
 }
 
 .latest-blog-post-title {
