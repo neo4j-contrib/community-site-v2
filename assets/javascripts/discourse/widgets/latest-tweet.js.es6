@@ -2,7 +2,7 @@ import { createWidget } from 'discourse/widgets/widget';
 import { h } from 'virtual-dom';
 
 export default createWidget('latest-tweet', {
-  tagName: "div.latest-tweet",
+  tagName: "div.latest-tweet.neo4j-sidebar-widget",
   buildKey: () => 'latest-tweet',
 
   html() {

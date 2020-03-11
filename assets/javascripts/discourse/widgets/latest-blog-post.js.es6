@@ -3,7 +3,7 @@ import { h } from 'virtual-dom';
 import { getLatestBlogPost, getBlogAuthor } from '../lib/get-blog-posts';
 
 export default createWidget('latest-blog-post', {
-  tagName: "div.latest-blog-post",
+  tagName: "div.latest-blog-post.neo4j-sidebar-widget",
   buildKey: () => 'latest-blog-post',
 
   defaultState() {
