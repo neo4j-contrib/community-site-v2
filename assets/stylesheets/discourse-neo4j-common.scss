@@ -28,6 +28,10 @@ $neo4j-dark: black;
    "announce"
    "blog"
    "tweets"
+   "newbie"
+   "store"
+   "jobs"
+   "feedback"
    "links"
    "whitespace"
 }
@@ -45,6 +49,7 @@ $neo4j-dark: black;
    "help"
    "community"
    "projects"
+   "new_members"
 }
 
 .neo4j-home-grid-header {
@@ -79,6 +84,10 @@ $neo4j-dark: black;
   grid-area: projects;
 }
 
+.neo4j-home-grid-meet-new-members {
+  grid-area: new_members;
+}
+
 .neo4j-home-grid-announcements {
   grid-area: announce;
 }
@@ -95,19 +104,35 @@ $neo4j-dark: black;
   grid-area: links;
 }
 
-.neo4j-home-grid-sidebar-spacer {
-  grid-area: whitespace;
-  min-height: 400px;
+.neo4j-home-grid-neo4j-newbie {
+  grid-area: newbie
 }
 
-.ninjas-container {
+.neo4j-home-grid-graph-gear-store {
+  grid-area: store
+}
+
+.neo4j-home-grid-jobs {
+  grid-area: jobs
+}
+
+.neo4j-home-grid-share-feedback {
+  grid-area: feedback
+}
+
+.neo4j-home-grid-sidebar-spacer {
+  grid-area: whitespace;
+  min-height: 200px;
+}
+
+.ninjas-container, .certified-devs-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 15px;
   grid-template-areas: "ninja ninja ninja"
 }
 
-.ninjas-entry {
+.ninjas-entry, .certified-devs-entry {
   color: $neo4j-dark;   
   padding: 10px;
   text-align: center;
@@ -118,11 +143,11 @@ $neo4j-dark: black;
   }
  }
 
- .ninja-name,.ninja-username {
+ .ninja-name,.ninja-username, .certified-dev-name, .certified-dev-username  {
   font-weight: bold;
 }
 
-.ninja-name,.ninja-member-since {
+.ninja-name,.ninja-member-since, .certified-dev-name, .certified-dev-member-since {
   color: $neo4j-grey;
 }
 
@@ -167,21 +192,8 @@ $neo4j-dark: black;
   color: $neo4j-grey;
 }
 
-.community-content-header, .community-projects-header, .can-you-help-header {
+.community-content-header, .community-projects-header, .can-you-help-header, .meet-new-members-header {
   display: inline-block;
-}
-
-.community-projects-title, .community-content-title, .can-you-help-title {
-  padding-right: 20px;
-}
-
-.community-projects-title, .community-projects-main-link,
-.community-content-title, .community-content-main-link,
-.can-you-help-title, .can-you-help-main-link {
-  float: left;
-}
-
-.community-projects-header, .community-content-header, .can-you-help-header {
   a:link, a:visited {
     color: $neo4j-dark;
   };
@@ -190,7 +202,18 @@ $neo4j-dark: black;
   }
 }
 
-.community-content-container, .community-projects-container {
+.community-projects-title, .community-content-title, .can-you-help-title, .meet-new-members-title {
+  padding-right: 20px;
+}
+
+.community-projects-title, .community-projects-main-link,
+.community-content-title, .community-content-main-link,
+.can-you-help-title, .can-you-help-main-link,
+.meet-new-members-title, .meet-new-members-main-link {
+  float: left;
+}
+
+.community-content-container, .community-projects-container, .meet-new-members-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 15px;
@@ -214,18 +237,18 @@ $neo4j-dark: black;
                        "cc-avatar cc-meta-likes cc-meta-posts cc-meta-views"
 }
 
-.community-content-title {
+.community-content-title, .meet-new-members-title {
   grid-area: cc-title;
   text-align: left;
   color: $neo4j-dark;
 }
 
-.community-content-avatar {
+.community-content-avatar, .meet-new-members-avatar {
   grid-area: cc-avatar;
 
 }
 
-.community-content-likes {
+.community-content-likes, .meet-new-members-likes {
   grid-area: cc-meta-likes;
   color: $neo4j-grey;
   text-align: left;
@@ -236,7 +259,7 @@ $neo4j-dark: black;
   }
 }
 
-.community-content-posts {
+.community-content-posts, .meet-new-members-posts {
   grid-area: cc-meta-posts;
   color: $neo4j-grey;
   text-align: left;
@@ -247,7 +270,7 @@ $neo4j-dark: black;
   }
 }
 
-.community-content-views {
+.community-content-views, .meet-new-members-views {
   grid-area: cc-meta-views;
   color: $neo4j-grey;
   text-align: left;
@@ -256,6 +279,31 @@ $neo4j-dark: black;
   svg {
     padding-right: 5px;
   }
+}
+
+.meet-new-members-entry {
+  color: $neo4j-dark;   
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0px 2px 4px 2px rgb(138, 138, 138);
+  border-radius: 4px;
+  a {
+    color: $neo4j-dark;
+  }
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto auto 40px 40px;
+  grid-template-areas: "cc-avatar cc-meta-likes"
+                       "cc-avatar cc-meta-posts"
+                       "cc-avatar cc-meta-views"
+                       "cc-title cc-title"
+                       "mnm-excerpt mnm-excerpt"
+}
+
+.meet-new-members-excerpt {
+  color: $neo4j-grey;
+  grid-area: mnm-excerpt;
 }
 
 .wp-blog-posts-widget-entry-title {
@@ -286,21 +334,51 @@ $neo4j-dark: black;
   }
 }
 
-.useful-links-entry-title {
+.link-set {
+  border: solid 1px;
+  border-radius: 3px;
+  color: $neo4j-grey;
+  h3 {
+    padding: 5px;
+    color: white;
+    background-color: $neo4j-grey;
+    margin-bottom: -2px;
+  }
+}
+
+.link-set-list-container {
+  border: solid 1px;
+  color: $neo4j-grey;
+}
+
+.link-set-entry-title {
   font-size: 12px;
 }
 
-.useful-links-entry {
+.link-set-entry {
   width: 100%;
   list-style-type: none;
-  border-bottom: solid #3333 1px;
   padding: 5px 0  5px 5px;
-  a:link, a:visited {
-    color: $neo4j-dark;
+
+  a:link, a:visited  {
+    display: block;
+      color: white;
+      background-color: $neo4j-pale-blue;
+      font-weight: bold;
+      padding: 6px;
+      margin-right: 10px;
+      border-radius:5px;
   };
+
   a:hover {
-    color: $neo4j-pale-blue;
-  }
+    display: block;
+    color: $neo4j-dark;
+    background-color: $neo4j-green;
+    font-weight: bold;
+    padding: 6px;
+    margin-right: 10px;
+    border-radius:5px;
+ }
 }
 
 .latest-blog-post-title {

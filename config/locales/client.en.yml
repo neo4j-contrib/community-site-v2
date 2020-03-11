@@ -17,6 +17,14 @@ en:
         ninjas:
           title: "Neo4j Ninjas of the Week"
           since: "Member since"
+        neo4j-newbie-links:
+          title: "Neo4j Newbie"
+        graph-gear-store-links:
+          title: "Graph Gear Store"
+        jobs-links:
+          title: "Jobs"
+        share-feedback-links:
+          title: "Share Feedback"
         useful-links:
           title: "Useful Links"
         can-you-help:
@@ -28,4 +36,10 @@ en:
         community-projects:
           title: "Latest Community Projects"
           link-text: "View all >>"
+        meet-new-members:
+          title: "Meet The New Members"
+          link-text: "View all >>"
+        certified-devs:
+          title: "Certified Developers"
+          since: "Certified since"
       search-placeholder-text: "Search the community"
