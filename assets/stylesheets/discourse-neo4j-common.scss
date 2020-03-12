@@ -2,7 +2,7 @@
 
 $neo4j-pale-blue: #77c1f4;
 $neo4j-green: rgb(108,201,155);
-$neo4j-grey: rgb(138, 138, 138);
+$neo4j-grey: rgb(192, 192, 192);
 $neo4j-dark: black;
 
 // Neo4j Community Landing Layout
@@ -306,6 +306,8 @@ $neo4j-dark: black;
   position: relative;
   text-align: left;
   grid-area: mnm-excerpt;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .wp-blog-posts-widget-entry-title {
