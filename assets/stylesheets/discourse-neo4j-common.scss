@@ -303,6 +303,8 @@ $neo4j-dark: black;
 
 .meet-new-members-excerpt {
   color: $neo4j-grey;
+  position: relative;
+  text-align: left;
   grid-area: mnm-excerpt;
 }
 
@@ -311,6 +313,10 @@ $neo4j-dark: black;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.announcements-list-container, .latest-blog-post-entry {
+  padding: 5px;
 }
 
 .announcements-entry-title, .announcements-view-all {
@@ -334,7 +340,7 @@ $neo4j-dark: black;
   }
 }
 
-.link-set {
+.link-set, .neo4j-sidebar-widget {
   border: solid 1px;
   border-radius: 3px;
   color: $neo4j-grey;
@@ -342,12 +348,13 @@ $neo4j-dark: black;
     padding: 5px;
     color: white;
     background-color: $neo4j-grey;
-    margin-bottom: -2px;
+    margin-bottom: 0px;
   }
 }
 
 .link-set-list-container {
   border: solid 1px;
+  padding: 5px 0 5px 0;
   color: $neo4j-grey;
 }
 

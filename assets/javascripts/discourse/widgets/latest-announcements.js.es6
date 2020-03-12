@@ -62,7 +62,7 @@ export default createWidget('latest-announcements', {
         })
       }
     }
-    return h('div.announcements',
+    return h('div.announcements.neo4j-sidebar-widget',
             [h('h3', I18n.t('neo4j.widgets.announcements.title')),
               h('div.announcements-list-container',
                 [buffer, 
