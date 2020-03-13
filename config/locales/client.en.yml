@@ -43,3 +43,5 @@ en:
           title: "Certified Developers"
           since: "Certified since"
       search-placeholder-text: "Search the community"
+      neo-create-topic-text: "Start a new Discussion"
+      neo-last-reply-by-text: "Last reply by"
