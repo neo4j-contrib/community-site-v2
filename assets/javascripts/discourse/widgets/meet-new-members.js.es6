@@ -12,7 +12,6 @@ export default createWidget('meet-new-members', {
   defaultState() {
     return {
       topics: null,
-      users: null,
       loaded: false,
       loading: false
     };
@@ -24,13 +23,11 @@ export default createWidget('meet-new-members', {
 
     state.loading = true;
 
-    getLatestTopics(Discourse.SiteSettings.neo4j_meet_new_members_category).then((result) => {
-      if (result.topic_list) {
-          state.topics = result.topic_list.topics.slice(0,Discourse.SiteSettings.neo4j_meet_new_members_number_of_entries);
-          state.users = result.users
+    getLatestTopics("meet_new_members").then((result) => {
+      if (result) {
+          state.topics = result;
       } else {
         state.topics = [];
-        state.users = [];
       }
       state.loading = false;
       state.loaded = true;
@@ -50,7 +47,6 @@ export default createWidget('meet-new-members', {
 
     var buffer = [];
     var topics = state.topics;
-    var users = state.users;
 
     if (topics !== null) {
       if (topics.length > 0) {
@@ -67,8 +63,8 @@ export default createWidget('meet-new-members', {
                 [
                   h("div.meet-new-members-avatar",
                     avatarImg("huge", {
-                      template: users.find(({ id }) => id === topic.posters[0].user_id).avatar_template,
-                      username: formatUsername(users.find(({ id }) => id === topic.posters[0].user_id).username)
+                      template: topic.avatar_template,
+                      username: formatUsername(topic.username)
                     })
                   ),
                   h("div.meet-new-members-likes",[iconNode("far-heart"),
@@ -87,7 +83,7 @@ export default createWidget('meet-new-members', {
     }
     return h('div.meet-new-members', [
       h('div.meet-new-members-header', [
-        h('h3.meet-new-members-title', I18n.t('neo4j.widgets.meet-new-members.title')),
+        h('h3.meet-new-members-header-title', I18n.t('neo4j.widgets.meet-new-members.title')),
         h('a.meet-new-members-main-link', {
           "attributes": {
             "href": `/c/${Discourse.SiteSettings.neo4j_meet_new_members_category}`

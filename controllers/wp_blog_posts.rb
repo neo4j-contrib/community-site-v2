@@ -1,7 +1,7 @@
 require 'nokogiri'
 # require_relative '../lib/featuredmember'
 
-class ::DiscourseNeo4j::WpblogpostsController < ::ApplicationController
+class ::DiscourseNeo4j::WpBlogPostsController < ::ApplicationController
   include HTTParty
   #include FeaturedMember
 

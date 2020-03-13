@@ -12,7 +12,6 @@ export default createWidget('community-content', {
   defaultState() {
     return {
       topics: null,
-      users: null,
       loaded: false,
       loading: false
     };
@@ -23,13 +22,12 @@ export default createWidget('community-content', {
     if (this.loading) { return; }
 
     state.loading = true;
-    getLatestTopics(Discourse.SiteSettings.neo4j_community_content_category).then((result) => {
-      if (result.topic_list) {
-          state.topics = result.topic_list.topics.slice(0,Discourse.SiteSettings.neo4j_community_content_number_of_entries);
-          state.users = result.users
+
+    getLatestTopics("community_content").then((result) => {
+      if (result) {
+          state.topics = result;
       } else {
         state.topics = [];
-        state.users = [];
       }
       state.loading = false;
       state.loaded = true;
@@ -49,7 +47,6 @@ export default createWidget('community-content', {
 
     var buffer = [];
     var topics = state.topics;
-    var users = state.users;
 
     if (topics !== null) {
       if (topics.length > 0) {
@@ -66,8 +63,8 @@ export default createWidget('community-content', {
                 [
                   h("div.community-content-avatar",
                     avatarImg("medium", {
-                      template: users.find(({ id }) => id === topic.posters[0].user_id).avatar_template,
-                      username: formatUsername(users.find(({ id }) => id === topic.posters[0].user_id).username)
+                      template: topic.avatar_template,
+                      username: formatUsername(topic.username)
                     })
                   ),
                   [
@@ -87,7 +84,7 @@ export default createWidget('community-content', {
     }
     return h('div.community-content', [
       h('div.community-content-header', [
-        h('h3.community-content-title', I18n.t('neo4j.widgets.community-content.title')),
+        h('h3.community-content-header-title', I18n.t('neo4j.widgets.community-content.title')),
         h('a.community-content-main-link', {
           "attributes": {
             "href": `/c/${Discourse.SiteSettings.neo4j_community_content_category}`

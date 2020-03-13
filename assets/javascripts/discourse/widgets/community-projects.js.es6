@@ -12,7 +12,6 @@ export default createWidget('community-projects', {
   defaultState() {
     return {
       topics: null,
-      users: null,
       loaded: false,
       loading: false
     };
@@ -24,13 +23,11 @@ export default createWidget('community-projects', {
 
     state.loading = true;
 
-    getLatestTopics(Discourse.SiteSettings.neo4j_community_projects_category).then((result) => {
-      if (result.topic_list) {
-          state.topics = result.topic_list.topics.slice(0,Discourse.SiteSettings.neo4j_community_projects_number_of_entries);
-          state.users = result.users
+    getLatestTopics("community_projects").then((result) => {
+      if (result) {
+          state.topics = result;
       } else {
         state.topics = [];
-        state.users = [];
       }
       state.loading = false;
       state.loaded = true;
@@ -50,7 +47,6 @@ export default createWidget('community-projects', {
 
     var buffer = [];
     var topics = state.topics;
-    var users = state.users;
 
     if (topics !== null) {
       if (topics.length > 0) {
@@ -68,8 +64,8 @@ export default createWidget('community-projects', {
                 [
                   h("div.community-content-avatar",
                     avatarImg("medium", {
-                      template: users.find(({ id }) => id === topic.posters[0].user_id).avatar_template,
-                      username: formatUsername(users.find(({ id }) => id === topic.posters[0].user_id).username)
+                      template: topic.avatar_template,
+                      username: formatUsername(topic.username)
                     })
                   ),
                   [
@@ -89,7 +85,7 @@ export default createWidget('community-projects', {
     }
     return h('div.community-projects', [
       h('div.community-projects-header', [
-        h('h3.community-projects-title', I18n.t('neo4j.widgets.community-projects.title')),
+        h('h3.community-projects-header-title', I18n.t('neo4j.widgets.community-projects.title')),
         h('a.community-projects-main-link', {
           "attributes": {
             "href": `/c/${Discourse.SiteSettings.neo4j_community_projects_category}`
