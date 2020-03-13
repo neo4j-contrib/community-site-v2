@@ -68,19 +68,4 @@ after_initialize do
     end
   end
 
-
-  module EnableTopicListItemExcerpt
-    def excerpt
-      object.excerpt
-    end
-
-    def include_excerpt?
-      object.excerpt.present?
-    end
-  end
-
-  class ::TopicListItemSerializer
-  prepend EnableTopicListItemExcerpt
-  end
-
 end
