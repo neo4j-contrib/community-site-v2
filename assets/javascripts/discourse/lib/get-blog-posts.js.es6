@@ -3,7 +3,7 @@ import { Promise } from "rsvp";
 
 let getLatestBlogPost = () =>  {
      return new Promise((resolve, reject) => {
-          ajax("/wplatestblogpost.json").then(result => {
+          ajax("/wp_latest_blogpost.json").then(result => {
             resolve(result)
           }).catch((err) => {
             reject([]);
@@ -13,7 +13,7 @@ let getLatestBlogPost = () =>  {
 
 let getBlogAuthor = (id) =>  {
      return new Promise((resolve, reject) => {
-          ajax(`/wpblogauthor.json?id=${id}`).then(result => {
+          ajax(`/wp_blog_author.json?id=${id}`).then(result => {
             resolve(result)
           }).catch((err) => {
             reject([]);
@@ -23,7 +23,7 @@ let getBlogAuthor = (id) =>  {
 
 let getFeaturedMember = () =>  {
      return new Promise((resolve, reject) => {
-          ajax(`/wpfeaturedmember.json`).then(result => {
+          ajax(`/wp_featured_member.json`).then(result => {
             resolve(result)
           }).catch((err) => {
             reject([]);

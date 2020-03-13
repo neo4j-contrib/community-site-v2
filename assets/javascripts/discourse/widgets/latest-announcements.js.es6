@@ -20,9 +20,9 @@ export default createWidget('latest-announcements', {
 
     state.loading = true;
 
-    getLatestTopics(Discourse.SiteSettings.neo4j_latest_announcements_category).then((result) => {
-      if (result.topic_list) {
-          state.announcements = result.topic_list.topics.slice(0,Discourse.SiteSettings.neo4j_latest_announcements_number_of_entries-1);
+    getLatestTopics("announcements").then((result) => {
+      if (result) {
+          state.announcements = result;
       } else {
         state.announcements = [];
       }

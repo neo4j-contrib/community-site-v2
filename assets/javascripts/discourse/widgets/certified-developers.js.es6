@@ -76,6 +76,15 @@ export default createWidget('certified-developers', {
         })
       }
     }
-    return h('div.certified-devs', [h('h3', I18n.t('neo4j.widgets.certified-devs.title')), h('div.certified-devs-container', buffer)]);
+    return h('div.certified-devs', [
+      h('div.certified-devs-header', [
+        h('h3.certified-devs-header-title', I18n.t('neo4j.widgets.certified-devs.title')),
+        h('a.certified-devs-main-link', {
+            "attributes": {
+              "href": `/g/${certified_devs[0].group_name}`
+            }
+          }, I18n.t('neo4j.widgets.certified-devs.link-text'))
+        ]),
+       h('div.certified-devs-container', buffer)]);
    }
 });

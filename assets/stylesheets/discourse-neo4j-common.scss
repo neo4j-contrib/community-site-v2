@@ -192,7 +192,7 @@ $neo4j-dark: black;
   color: $neo4j-grey;
 }
 
-.community-content-header, .community-projects-header, .can-you-help-header, .meet-new-members-header {
+.community-content-header, .community-projects-header, .can-you-help-header, .meet-new-members-header, .certified-devs-header {
   display: inline-block;
   a:link, a:visited {
     color: $neo4j-dark;
@@ -202,14 +202,14 @@ $neo4j-dark: black;
   }
 }
 
-.community-projects-title, .community-content-title, .can-you-help-title, .meet-new-members-title {
+.community-projects-header-title, .community-content-header-title, .can-you-help-header-title, .meet-new-members-header-title, .certified-devs-header-title {
   padding-right: 20px;
 }
 
-.community-projects-title, .community-projects-main-link,
-.community-content-title, .community-content-main-link,
-.can-you-help-title, .can-you-help-main-link,
-.meet-new-members-title, .meet-new-members-main-link {
+.community-projects-header-title, .community-projects-main-link,
+.community-content-header-title, .community-content-main-link,
+.can-you-help-header-title, .can-you-help-main-link,
+.meet-new-members-header-title, .meet-new-members-main-link, .certified-devs-header-title, .certified-devs-main-link {
   float: left;
 }
 

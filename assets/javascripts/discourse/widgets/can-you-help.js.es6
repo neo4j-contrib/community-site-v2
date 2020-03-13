@@ -85,7 +85,7 @@ export default createWidget('can-you-help', {
     }
     return h('div.can-you-help', [
       h('div.can-you-help-header', [
-        h('h3.can-you-help-title', I18n.t('neo4j.widgets.can-you-help.title')),
+        h('h3.can-you-help-header-title', I18n.t('neo4j.widgets.can-you-help.title')),
         h('a.can-you-help-main-link', {
           "attributes": {
             "href": `/search?${Discourse.SiteSettings.neo4j_can_you_help_search_criteria}`
