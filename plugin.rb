@@ -31,12 +31,15 @@ after_initialize do
   load File.expand_path('../controllers/wpblogposts.rb', __FILE__)
   load File.expand_path('../serializers/ninjas.rb', __FILE__)
   load File.expand_path('../controllers/ninjas.rb', __FILE__)
+  load File.expand_path('../controllers/certified_devs.rb', __FILE__)
+  load File.expand_path('../serializers/topic_list_item_edits.rb', __FILE__)
 
   ::DiscourseNeo4j::Engine.routes.draw do
     get "/wplatestblogpost" => "wpblogposts#latest_post"
     get "/wpblogauthor" => "wpblogposts#author"
     get "/wpfeaturedmember" => "wpblogposts#featured_member"
     get "/ninjas" => "ninjas#list"
+    get "/certified_devs" => "certified_devs#list"
   end
 
   UsersController.class_eval do
@@ -65,6 +68,7 @@ after_initialize do
     end
   end
 
+
   module EnableTopicListItemExcerpt
     def excerpt
       object.excerpt
@@ -78,4 +82,5 @@ after_initialize do
   class ::TopicListItemSerializer
   prepend EnableTopicListItemExcerpt
   end
+
 end
