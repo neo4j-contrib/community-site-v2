@@ -12,4 +12,6 @@ en:
     neo4j_community_content_number_of_entries: "Number of entries in Community Content widget"
     neo4j_community_projects_category: "Category from which the Community Projects widget gets its feed"
     neo4j_community_projects_number_of_entries: "Number of entries in Community Projects widget"
+    neo4j_can_you_help_number_of_entries: "Number of entries in Can You Help widget"
+    neo4j_can_you_help_search_criteria: "Search criteria for Can You Help widget"
     neo4j_useful_links: "Links that appear in Useful Links widget.  Each must be comma separated of format link-title,link-url to work."

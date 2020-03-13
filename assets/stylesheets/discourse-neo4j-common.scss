@@ -95,6 +95,11 @@ $neo4j-dark: black;
   grid-area: links;
 }
 
+.neo4j-home-grid-sidebar-spacer {
+  grid-area: whitespace;
+  min-height: 400px;
+}
+
 .ninjas-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
