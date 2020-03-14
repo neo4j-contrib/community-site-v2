@@ -29,6 +29,7 @@ after_initialize do
 
   load File.expand_path('../lib/featured_member.rb', __FILE__)
   load File.expand_path('../lib/select_topics.rb', __FILE__)
+  load File.expand_path('../lib/wp_retrieve.rb', __FILE__)
   load File.expand_path('../controllers/wp_blog_posts.rb', __FILE__)
   load File.expand_path('../serializers/ninjas.rb', __FILE__)
   load File.expand_path('../controllers/ninjas.rb', __FILE__)
