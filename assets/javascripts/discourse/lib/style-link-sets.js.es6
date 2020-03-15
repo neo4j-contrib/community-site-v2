@@ -21,8 +21,8 @@ let formatLinkSet = (linkSet, titleKey) => {
       })
     }
   }
-  return h('div.link-set',
-          [h('h3', I18n.t(titleKey)),
+  return h('div.link-set.neo4j-widget-sidebar',
+          [h('h3.neo4j-widget-sidebar-header', I18n.t(titleKey)),
             h('div.link-set-list-container', buffer)
           ]
         );

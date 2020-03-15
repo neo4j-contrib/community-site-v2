@@ -58,7 +58,7 @@ export default createWidget('community-projects', {
               {
                 attributes: {
                   "href": `/t/${topic.id}`,
-                  "class": "community-content-entry"
+                  "class": "community-content-entry neo4j-widget-main-entry"
                 }
               },
                 [
@@ -83,10 +83,10 @@ export default createWidget('community-projects', {
         })
       }
     }
-    return h('div.community-projects', [
-      h('div.community-projects-header', [
-        h('h3.community-projects-header-title', I18n.t('neo4j.widgets.community-projects.title')),
-        h('a.community-projects-main-link', {
+    return h('div.community-projects.neo4j-widget-main-container', [
+      h('div.community-projects-header.neo4j-widget-main-header', [
+        h('h3.community-projects-header-title.neo4j-widget-main-title', I18n.t('neo4j.widgets.community-projects.title')),
+        h('a.community-projects-main-link.neo4j-widget-main-main-link', {
           "attributes": {
             "href": `/c/${Discourse.SiteSettings.neo4j_community_projects_category}`
           }

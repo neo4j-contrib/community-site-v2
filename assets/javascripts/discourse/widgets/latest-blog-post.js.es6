@@ -3,7 +3,7 @@ import { h } from 'virtual-dom';
 import { getLatestBlogPost, getBlogAuthor } from '../lib/get-blog-posts';
 
 export default createWidget('latest-blog-post', {
-  tagName: "div.latest-blog-post.neo4j-sidebar-widget",
+  tagName: "div.latest-blog-post.neo4j-widget-sidebar",
   buildKey: () => 'latest-blog-post',
 
   defaultState() {
@@ -93,6 +93,6 @@ export default createWidget('latest-blog-post', {
             ]
           )
         }
-    return h('div.latest-blog-post-inner', [h('h3', I18n.t('neo4j.widgets.blog_post.title')) ,buffer]);
+    return h('div.latest-blog-post-inner', [h('h3.neo4j-widget-sidebar-header', I18n.t('neo4j.widgets.blog_post.title')) ,buffer]);
   }
 });

@@ -2,7 +2,7 @@ import { createWidget } from 'discourse/widgets/widget';
 import { h } from 'virtual-dom';
 
 export default createWidget('latest-tweet', {
-  tagName: "div.latest-tweet.neo4j-sidebar-widget",
+  tagName: "div.latest-tweet.neo4j-widget-sidebar",
   buildKey: () => 'latest-tweet',
 
   html() {
@@ -30,6 +30,6 @@ export default createWidget('latest-tweet', {
         )
       ]
     ]
-    return h('div.twitter-widget-inner', [h('h3', I18n.t('neo4j.widgets.tweets.title')), nodes]);
+    return h('div.twitter-widget-inner', [h('h3.neo4j-widget-sidebar-header', I18n.t('neo4j.widgets.tweets.title')), nodes]);
   }
 })
