@@ -74,10 +74,10 @@ export default createWidget('custom-categories', {
       }
     };
     
-    return h('div.custom-categories', [
-            h('div.custom-categories-widget-header', [
-            h('h3.custom-categories-widget-title', I18n.t('neo4j.widgets.custom-categories.title')),
-              h('a.custom-categories-widget-main-link', {
+    return h('div.custom-categories.neo4j-widget-main-container', [
+            h('div.custom-categories-widget-header.neo4j-widget-main-header', [
+            h('h3.custom-categories-widget-title.neo4j-widget-main-title', I18n.t('neo4j.widgets.custom-categories.title')),
+              h('a.custom-categories-widget-main-link.neo4j-widget-main-main-link', {
                 "attributes": {
                   "href": `/latest`
                 }

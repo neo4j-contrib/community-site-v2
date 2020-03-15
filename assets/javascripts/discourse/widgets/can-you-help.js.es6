@@ -61,7 +61,7 @@ export default createWidget('can-you-help', {
               {
                 attributes: {
                   "href": `/t/${topic.id}`,
-                  "class": "can-you-help-entry"
+                  "class": "can-you-help-entry neo4j-widget-main-entry"
                 }
               },
                 [
@@ -83,10 +83,10 @@ export default createWidget('can-you-help', {
         })
       }
     }
-    return h('div.can-you-help', [
-      h('div.can-you-help-header', [
-        h('h3.can-you-help-header-title', I18n.t('neo4j.widgets.can-you-help.title')),
-        h('a.can-you-help-main-link', {
+    return h('div.can-you-help.neo4j-widget-main-container', [
+      h('div.can-you-help-header.neo4j-widget-main-header', [
+        h('h3.can-you-help-header-title.neo4j-widget-main-title', I18n.t('neo4j.widgets.can-you-help.title')),
+        h('a.can-you-help-main-link.neo4j-widget-main-main-link', {
           "attributes": {
             "href": `/search?${Discourse.SiteSettings.neo4j_can_you_help_search_criteria}`
           }

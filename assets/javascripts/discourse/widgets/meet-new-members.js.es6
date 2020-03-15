@@ -57,7 +57,7 @@ export default createWidget('meet-new-members', {
               {
                 attributes: {
                   "href": `/t/${topic.id}`,
-                  "class": "meet-new-members-entry"
+                  "class": "meet-new-members-entry neo4j-widget-main-entry"
                 }
               },
                 [
@@ -74,17 +74,17 @@ export default createWidget('meet-new-members', {
                   h("div.meet-new-members-views", [iconNode("far-eye"),
                   " ", topic.views]),
                   h("div.meet-new-members-title", topic.title),
-                  h("div.meet-new-members-excerpt", topic.excerpt)
+                  h("div.meet-new-members-excerpt", unescape(topic.excerpt))
                 ]
               )
           )
         })
       }
     }
-    return h('div.meet-new-members', [
-      h('div.meet-new-members-header', [
-        h('h3.meet-new-members-header-title', I18n.t('neo4j.widgets.meet-new-members.title')),
-        h('a.meet-new-members-main-link', {
+    return h('div.meet-new-members.neo4j-widget-main-container', [
+      h('div.meet-new-members-header.neo4j-widget-main-header', [
+        h('h3.meet-new-members-header-title.neo4j-widget-main-title', I18n.t('neo4j.widgets.meet-new-members.title')),
+        h('a.meet-new-members-main-link.neo4j-widget-main-main-link', {
           "attributes": {
             "href": `/c/${Discourse.SiteSettings.neo4j_meet_new_members_category}`
           }

@@ -52,7 +52,7 @@ export default createWidget('certified-developers', {
 
         certified_devs.forEach (certified_dev => {
 
-          buffer.push(h("div.certified-devs-entry",
+          buffer.push(h("div.certified-devs-entry.neo4j-widget-main-entry",
             h("a",
               {
                 attributes: {
@@ -76,10 +76,10 @@ export default createWidget('certified-developers', {
         })
       }
     }
-    return h('div.certified-devs', [
-      h('div.certified-devs-header', [
-        h('h3.certified-devs-header-title', I18n.t('neo4j.widgets.certified-devs.title')),
-        h('a.certified-devs-main-link', {
+    return h('div.certified-devs.neo4j-widget-main-container', [
+      h('div.certified-devs-header.neo4j-widget-main-header', [
+        h('h3.certified-devs-header-title.neo4j-widget-main-title', I18n.t('neo4j.widgets.certified-devs.title')),
+        h('a.certified-devs-main-link.neo4j-widget-main-main-link', {
             "attributes": {
               "href": `/g/${certified_devs[0].group_name}`
             }

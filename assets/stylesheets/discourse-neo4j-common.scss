@@ -11,19 +11,18 @@ $neo4j-dark: black;
   display: grid;
   grid-gap: 20px;
   grid-template-columns: 3fr 1fr;
-  grid-template-rows: auto auto auto;
+  grid-template-rows: auto;
   grid-template-areas:
-   "header header"
    "main sidebar"
    "footer footer"
-}
+  }
 
 .neo4j-home-grid-sidebar {
   display: grid;
   grid-area: sidebar;
-  grid-gap: 20px;
+  grid-gap: 10px;
   grid-template-columns: auto;
-  grid-template-rows: auto auto auto auto auto;
+  grid-template-rows: auto;
   grid-template-areas:
    "announce"
    "blog"
@@ -33,7 +32,7 @@ $neo4j-dark: black;
    "jobs"
    "feedback"
    "links"
-   "whitespace"
+   "sidebar_whitespace"
 }
 
 .neo4j-home-grid-main {
@@ -41,7 +40,7 @@ $neo4j-dark: black;
   grid-area: main;
   grid-gap: 20px;
   grid-template-columns: 1fr;
-  grid-template-rows: auto auto auto auto auto;
+  grid-template-rows: auto;
   grid-template-areas:
    "contents"
    "ninjas"
@@ -50,6 +49,8 @@ $neo4j-dark: black;
    "community"
    "projects"
    "new_members"
+   "cert_developers"
+   "main_whitespace"
 }
 
 .neo4j-home-grid-header {
@@ -88,6 +89,14 @@ $neo4j-dark: black;
   grid-area: new_members;
 }
 
+.neo4j-home-grid-certified-devlopers {
+  grid-area: cert_developers;
+}
+
+.neo4j-home-grid-main-spacer {
+  grid-area: main_whitespace;
+}
+
 .neo4j-home-grid-announcements {
   grid-area: announce;
 }
@@ -121,8 +130,32 @@ $neo4j-dark: black;
 }
 
 .neo4j-home-grid-sidebar-spacer {
-  grid-area: whitespace;
+  grid-area: sidebar_whitespace;
+}
+
+.neo4j-home-grid-footer {
+  grid-area: footer;
   min-height: 200px;
+}
+
+.neo4j-widget-main-header, .neo4j-widget-sidebar-header {
+  background-color: $neo4j-grey;
+  color: white;
+  padding: 5px;
+}
+
+.neo4j-widget-main-header {
+  display: inline-block;
+  margin-bottom: 5px;
+
+  a:link, a:visited {
+    float: right;
+    color: white;
+    padding: 3px 0 -3px 0;
+  }
+  a:hover {
+    color: $neo4j-dark;
+  }
 }
 
 .ninjas-container, .certified-devs-container {
@@ -132,16 +165,24 @@ $neo4j-dark: black;
   grid-template-areas: "ninja ninja ninja"
 }
 
-.ninjas-entry, .certified-devs-entry {
-  color: $neo4j-dark;   
+.neo4j-widget-main-entry {
   padding: 10px;
-  text-align: center;
-  box-shadow: 0px 2px 4px 2px rgb(138, 138, 138);
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.30),0 0 0 0 rgba(0,0,0,0.15);
   border-radius: 4px;
+  color: $neo4j-dark;   
   a {
     color: $neo4j-dark;
   }
- }
+}
+
+.neo4j-widget-main-entry:hover {
+  background-color: darken($secondary, 2%);
+  lighten: ($primary, 70%);
+}
+
+.ninjas-entry, .certified-devs-entry {
+  text-align: center;
+}
 
  .ninja-name,.ninja-username, .certified-dev-name, .certified-dev-username  {
   font-weight: bold;
@@ -153,6 +194,7 @@ $neo4j-dark: black;
 
 .featured-member-image img{
   width: 100%;
+  border-radius: 4px;
 }
 
 .can-you-help-container {
@@ -163,13 +205,6 @@ $neo4j-dark: black;
 }
 
 .can-you-help-entry {
-  color: $neo4j-dark;   
-  padding: 10px;
-  box-shadow: 0px 2px 4px 2px rgb(138, 138, 138);
-  border-radius: 4px;
-  a {
-    color: $neo4j-dark;
-  }
   display: grid;
   grid-gap: 5px;
   grid-template-columns: 30px auto 30px;
@@ -192,24 +227,12 @@ $neo4j-dark: black;
   color: $neo4j-grey;
 }
 
-.community-content-header, .community-projects-header, .can-you-help-header, .meet-new-members-header, .certified-devs-header {
-  display: inline-block;
-  a:link, a:visited {
-    color: $neo4j-dark;
-  };
-  a:hover {
-    color: $neo4j-pale-blue;
-  }
-}
-
-.community-projects-header-title, .community-content-header-title, .can-you-help-header-title, .meet-new-members-header-title, .certified-devs-header-title {
+.neo4j-widget-main-title {
   padding-right: 20px;
 }
 
-.community-projects-header-title, .community-projects-main-link,
-.community-content-header-title, .community-content-main-link,
-.can-you-help-header-title, .can-you-help-main-link,
-.meet-new-members-header-title, .meet-new-members-main-link, .certified-devs-header-title, .certified-devs-main-link {
+.neo4j-widget-main-title, 
+.neo4j-widget-main-main-link {
   float: left;
 }
 
@@ -221,14 +244,7 @@ $neo4j-dark: black;
 }
 
 .community-content-entry {
-  color: $neo4j-dark;   
-  padding: 10px;
   text-align: center;
-  box-shadow: 0px 2px 4px 2px rgb(138, 138, 138);
-  border-radius: 4px;
-  a {
-    color: $neo4j-dark;
-  }
   display: grid;
   grid-gap: 5px;
   grid-template-columns: 40px auto auto auto;
@@ -282,14 +298,7 @@ $neo4j-dark: black;
 }
 
 .meet-new-members-entry {
-  color: $neo4j-dark;   
-  padding: 10px;
   text-align: center;
-  box-shadow: 0px 2px 4px 2px rgb(138, 138, 138);
-  border-radius: 4px;
-  a {
-    color: $neo4j-dark;
-  }
   display: grid;
   grid-gap: 5px;
   grid-template-columns: auto auto;
@@ -342,19 +351,26 @@ $neo4j-dark: black;
   }
 }
 
-.link-set, .neo4j-sidebar-widget {
-  border: solid 1px;
+.link-set, .neo4j-widget-sidebar, .neo4j-widget-main-header {
+  width: 100%;
+  border: solid 1px $neo4j-grey;
   border-radius: 3px;
   color: $neo4j-grey;
   h3 {
-    padding: 5px;
+    color: white;
+    background-color: $neo4j-grey;
+    margin-bottom: 0px;
+  }
+  .neo4j-widget-main-main-link a {
     color: white;
     background-color: $neo4j-grey;
     margin-bottom: 0px;
   }
 }
 
-.link-set-list-container {
+
+
+.link-set-list-container,  {
   border: solid 1px;
   padding: 5px 0 5px 0;
   color: $neo4j-grey;
@@ -411,13 +427,7 @@ $neo4j-dark: black;
 }
 
 .custom-categories-widget-header {
-  display: block;
-  a:link, a:visited {
-    color: $neo4j-dark;
-  };
-  a:hover {
-    color: $neo4j-pale-blue;
-  }
+  margin-bottom: 0px;
 }
 
 .custom-categories-widget-title {
