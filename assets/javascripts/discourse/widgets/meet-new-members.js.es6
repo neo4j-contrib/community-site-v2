@@ -4,6 +4,7 @@ import { getLatestTopics } from '../lib/get-latest-topics';
 import { avatarImg } from "discourse/widgets/post";
 import { formatUsername } from "discourse/lib/utilities";
 import { iconNode } from "discourse-common/lib/icon-library";
+import { decodeHTMLEntities } from '../lib/string-helpers';
 
 export default createWidget('meet-new-members', {
   tagName: "div.meet-new-members",
@@ -74,7 +75,7 @@ export default createWidget('meet-new-members', {
                   h("div.meet-new-members-views", [iconNode("far-eye"),
                   " ", topic.views]),
                   h("div.meet-new-members-title", topic.title),
-                  h("div.meet-new-members-excerpt", unescape(topic.excerpt))
+                  h("div.meet-new-members-excerpt", decodeHTMLEntities(topic.excerpt))
                 ]
               )
           )
