@@ -69,6 +69,6 @@ export default createWidget('featured-member', {
         ))
       )
     }
-    return h('div.featured-member-inner.neo4j-widget-main-container', [h('div.neo4j-widget-main-header', h('h3.neo4j-widget-main-title', I18n.t('neo4j.widgets.featured-member.title'))) ,buffer]);
+    return h('div.featured-member-inner.neo4j-widget-main', [h('div.neo4j-widget-main-header', h('h3.neo4j-widget-main-title', I18n.t('neo4j.widgets.featured-member.title'))), buffer]);
   }
 });

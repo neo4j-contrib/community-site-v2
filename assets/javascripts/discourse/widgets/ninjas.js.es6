@@ -76,6 +76,6 @@ export default createWidget('ninjas', {
         })
       }
     }
-    return h('div.ninjas.neo4j-widget-main-container', [h('div.neo4j-widget-main-header', h('h3.neo4j-widget-main-title', I18n.t('neo4j.widgets.ninjas.title'))), h('div.ninjas-container', buffer)]);
+    return h('div.ninjas.neo4j-widget-main', [h('div.neo4j-widget-main-header', h('h3.neo4j-widget-main-title', I18n.t('neo4j.widgets.ninjas.title'))), h('div.ninjas-container.neo4j-widget-main-container', buffer)]);
    }
 });

@@ -76,7 +76,7 @@ export default createWidget('certified-developers', {
         })
       }
     }
-    return h('div.certified-devs.neo4j-widget-main-container', [
+    return h('div.certified-devs.neo4j-widget-main', [
       h('div.certified-devs-header.neo4j-widget-main-header', [
         h('h3.certified-devs-header-title.neo4j-widget-main-title', I18n.t('neo4j.widgets.certified-devs.title')),
         h('a.certified-devs-main-link.neo4j-widget-main-main-link', {
@@ -85,6 +85,6 @@ export default createWidget('certified-developers', {
             }
           }, I18n.t('neo4j.widgets.certified-devs.link-text'))
         ]),
-       h('div.certified-devs-container', buffer)]);
+       h('div.certified-devs-container.neo4j-widget-main-container', buffer)]);
    }
 });
