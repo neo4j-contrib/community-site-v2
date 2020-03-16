@@ -2,7 +2,7 @@
 
 $neo4j-pale-blue: #77c1f4;
 $neo4j-green: rgb(108,201,155);
-$neo4j-grey: rgb(192, 192, 192);
+$neo4j-grey: #9599a1;
 $neo4j-dark: black;
 
 // Neo4j Community Landing Layout
@@ -319,11 +319,13 @@ $neo4j-dark: black;
   text-overflow: ellipsis;
 }
 
-.wp-blog-posts-widget-entry-title {
-  width: 220px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.latest-blog-post-entry {
+  a:link, a:visited {
+    color: $neo4j-dark;
+  };
+  a:hover {
+    color: $neo4j-pale-blue;
+  }
 }
 
 .announcements-list-container, .latest-blog-post-entry {
