@@ -18,7 +18,7 @@ var updateCookie = (container, api) => {
 export default {
   name: 'neo4j-edits',
   initialize(container) {
-    setDefaultHomepage('home');
+    if (!Discourse.Mobile.isMobileDevice) {setDefaultHomepage('home')};
     withPluginApi('0.8.31', (api) => {
       api.onPageChange(() => updateCookie(container, api));
 
