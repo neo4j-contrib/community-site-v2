@@ -9,7 +9,7 @@ export default createWidget('latest-tweet', {
     var nodes = [];
 
     nodes = [
-      h("div.twitter-widget-container"),
+      h("div.twitter-widget-container.neo4j-widget-main-container"),
       [
         h("a", {
           "attributes": {

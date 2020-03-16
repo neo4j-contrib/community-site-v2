@@ -82,7 +82,7 @@ export default createWidget('meet-new-members', {
         })
       }
     }
-    return h('div.meet-new-members.neo4j-widget-main-container', [
+    return h('div.meet-new-members.neo4j-widget-main', [
       h('div.meet-new-members-header.neo4j-widget-main-header', [
         h('h3.meet-new-members-header-title.neo4j-widget-main-title', I18n.t('neo4j.widgets.meet-new-members.title')),
         h('a.meet-new-members-main-link.neo4j-widget-main-main-link', {
@@ -91,7 +91,7 @@ export default createWidget('meet-new-members', {
           }
         }, I18n.t('neo4j.widgets.meet-new-members.link-text'))
       ]),
-      h('div.meet-new-members-container', buffer)
+      h('div.meet-new-members-container.neo4j-widget-main-container', buffer)
     ]);
   }
 });

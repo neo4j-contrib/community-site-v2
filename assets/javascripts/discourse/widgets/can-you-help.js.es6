@@ -83,7 +83,7 @@ export default createWidget('can-you-help', {
         })
       }
     }
-    return h('div.can-you-help.neo4j-widget-main-container', [
+    return h('div.can-you-help.neo4j-widget-main', [
       h('div.can-you-help-header.neo4j-widget-main-header', [
         h('h3.can-you-help-header-title.neo4j-widget-main-title', I18n.t('neo4j.widgets.can-you-help.title')),
         h('a.can-you-help-main-link.neo4j-widget-main-main-link', {
@@ -92,7 +92,7 @@ export default createWidget('can-you-help', {
           }
         }, I18n.t('neo4j.widgets.can-you-help.link-text'))
       ]),
-      h('div.can-you-help-container', buffer)
+      h('div.can-you-help-container.neo4j-widget-main-container.neo4j-widget-main-container.neo4j-widget-main-container', buffer)
     ]);
    }
 });

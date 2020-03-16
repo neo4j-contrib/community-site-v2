@@ -82,7 +82,7 @@ export default createWidget('community-content', {
         })
       }
     }
-    return h('div.community-content.neo4j-widget-main-container', [
+    return h('div.community-content.neo4j-widget-main', [
       h('div.community-content-header.neo4j-widget-main-header', [
         h('h3.community-content-header-title.neo4j-widget-main-title', I18n.t('neo4j.widgets.community-content.title')),
         h('a.community-content-main-link.neo4j-widget-main-main-link', {
@@ -91,7 +91,7 @@ export default createWidget('community-content', {
           }
         }, I18n.t('neo4j.widgets.community-content.link-text'))
       ]),
-      h('div.community-content-container', buffer)
+      h('div.community-content-container.neo4j-widget-main-container', buffer)
     ]);
   }
 });
