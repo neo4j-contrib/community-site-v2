@@ -28,7 +28,6 @@
         {{category-link topic.category}}
       {{/unless}}
     {{/unless}}
-    {{discourse-tags topic mode="list" tagsForUser=tagsForUser}}
     {{raw "list/action-list" topic=topic postNumbers=topic.liked_post_numbers className="likes" icon="heart"}}
     
   </div>
@@ -39,6 +38,9 @@
     {{~#if topic.featured_link}}
     {{~topic-featured-link topic}}
     {{~/if}}
+    <div class="neo-tags">
+    {{discourse-tags topic mode="list" tagsForUser=tagsForUser}}
+    </div>
 
     <div class="neo-last-post">
         <span>{{d-icon 'reply'}} {{i18n 'neo4j.neo-last-reply-by-text'}} {{lastPosterName}} {{lastPostedAt}}</span>
