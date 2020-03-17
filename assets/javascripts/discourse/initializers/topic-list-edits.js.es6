@@ -87,7 +87,7 @@ const topicListItemEdits = (api) => {
     removeMods(){
       this.$().removeClass('neo-topic-list');
       $('body').removeClass('custom-sidebar sidebar-right');
-      $('.topic-list').removeClass('with-sidebar', 'right');
+      $('.topic-list').removeClass('with-sidebar right');
     }
 
   });
