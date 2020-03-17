@@ -16,7 +16,7 @@ $entry-separation: 10px;
   grid-template-areas:
    "main sidebar"
    "footer footer"
-  }
+}
 
 .neo4j-home-grid-sidebar {
   grid-area: sidebar;
@@ -26,8 +26,16 @@ $entry-separation: 10px;
   grid-area: main;
 }
 
-.neo4j-widget-main, .neo4j-widget-sidebar {
+.neo4j-widget-main {
   margin-bottom: 20px;
+}
+
+.neo4j-widget-main-container, .tabset, .featured-member-image {
+  margin-left: 10px;
+}
+
+.neo4j-widget-sidebar {
+  margin-bottom: 15px;
 }
 
 .neo4j-widget-main-header, .neo4j-widget-sidebar-header {
@@ -261,8 +269,6 @@ $entry-separation: 10px;
     margin-bottom: 0px;
   }
 }
-
-
 
 .link-set-list-container,  {
   padding: 5px 0 5px 0;
