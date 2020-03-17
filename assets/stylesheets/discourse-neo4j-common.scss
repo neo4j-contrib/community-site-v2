@@ -11,7 +11,7 @@ $entry-separation: 10px;
 .neo4j-home-grid {
   display: grid;
   grid-gap: 20px;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 11fr 3fr;
   grid-template-rows: auto;
   grid-template-areas:
    "main sidebar"
@@ -244,7 +244,8 @@ $entry-separation: 10px;
   width: 100%;
   list-style-type: none;
   border-bottom: solid #3333 1px;
-  padding: 5px 0  5px 5px;
+  margin: 5px 10px 0 0;
+  padding: 5px 0px 5px 0px;
   a:link, a:visited {
     color: $neo4j-dark;
   };
