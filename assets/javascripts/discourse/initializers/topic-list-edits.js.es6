@@ -83,6 +83,13 @@ const topicListItemEdits = (api) => {
       }
     },
 
+    @on('willDestroyElement')
+    removeMods(){
+      this.$().removeClass('neo-topic-list');
+      $('body').removeClass('custom-sidebar sidebar-right');
+      $('.topic-list').removeClass('with-sidebar right');
+    }
+
   });
 
   api.modifyClass('component:navigation-bar', {
