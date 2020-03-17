@@ -77,7 +77,7 @@ export default createWidget('latest-blog-post', {
                   h("span.latest-blog-post-title", unescapeHtml(blogpost.title.rendered))
                 )
               ),
-              h("div.latest-blog-post-author-container.neo4j-widget-main-container",
+              h("div.latest-blog-post-author",
                 h("a", {
                     "attributes": {
                       "href": blogpost.authors_url,
