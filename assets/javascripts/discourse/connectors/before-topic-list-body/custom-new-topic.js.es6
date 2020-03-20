@@ -7,7 +7,8 @@ export default {
     component.set('display', false);
     if(/discovery.[a-zA-Z]*(c|C)ategory[a-zA-Z]*/.test(currentRouteName)) {
       component.set('display', true);
-      component.set('categories', Category.list());
+      const catList = Category.list().filter(cat => !cat.parentCategory);
+      component.set('categories', catList);
     }
 
   }
