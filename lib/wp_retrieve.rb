@@ -45,8 +45,8 @@ class DiscourseNeo4j::WpRetrieve
         document = Nokogiri::HTML(blogpost.first['content']['rendered'])
 
         member = DiscourseNeo4j::FeaturedMember.new
-        member.image_source = document.css('img').first.attributes['src'].value
-        member.link = document.css('a')[3].attributes['href'].value
+        member.image_source = document.css('#featured-community-member img').first.attributes['src'].value
+        member.link = document.css('a.medium.button').first.attributes['href'].value
 
         member
       else
