@@ -46,7 +46,7 @@ class DiscourseNeo4j::WpRetrieve
 
         member = DiscourseNeo4j::FeaturedMember.new
         member.image_source = document.css('#featured-community-member img').first.attributes['src'].value
-        member.link = document.css('a.medium.button').first.attributes['href'].value
+        member.link = document.css('#featured-community-member a.medium.button').first.attributes['href'].value
 
         member
       else
