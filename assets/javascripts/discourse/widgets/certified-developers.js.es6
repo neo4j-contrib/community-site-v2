@@ -62,7 +62,7 @@ export default createWidget('certified-developers', {
               },
                 [
                   h("div.certified-dev-avatar",
-                    avatarImg("huge", {
+                    avatarImg("extra_large", {
                       template: certified_dev.avatar_template,
                       username: formatUsername(certified_dev.username)
                     })

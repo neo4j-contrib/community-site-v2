@@ -63,7 +63,7 @@ export default createWidget('meet-new-members', {
               },
                 [
                   h("div.meet-new-members-avatar",
-                    avatarImg("huge", {
+                    avatarImg("extra_large", {
                       template: topic.avatar_template,
                       username: formatUsername(topic.username)
                     })

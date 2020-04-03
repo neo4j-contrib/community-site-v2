@@ -228,7 +228,7 @@ $entry-separation: 10px;
   display: grid;
   grid-gap: 5px;
   grid-template-columns: auto auto;
-  grid-template-rows: auto auto auto 40px 40px;
+  grid-template-rows: auto auto auto 40px 60px;
   grid-template-areas: "cc-avatar cc-meta-likes"
                        "cc-avatar cc-meta-posts"
                        "cc-avatar cc-meta-views"
