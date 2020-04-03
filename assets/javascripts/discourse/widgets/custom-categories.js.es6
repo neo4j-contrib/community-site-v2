@@ -9,8 +9,13 @@ export default createWidget('custom-categories', {
     var categories_buffer = [];
     var subcategories_buffer = [];
     var subcategory_tabs = [];
+    var selected_categories  = Discourse.SiteSettings.neo4j_category_nav_categories.split('|');
 
-    var categories = this.site.get("categoriesByCount").filter(entry => Discourse.SiteSettings.neo4j_category_nav_categories.split('|').includes(`${entry.id}`));
+    var categories = this.site.get("categoriesByCount").filter(entry => selected_categories.includes(`${entry.id}`));
+debugger;
+    categories.sort((a, b) => {  
+      return selected_categories.indexOf(`${a.id}`) - selected_categories.indexOf(`${b.id}`);
+    });
 
     if (categories !== null) {
       if (categories.length > 0) {
