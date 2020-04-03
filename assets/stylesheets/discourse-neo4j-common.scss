@@ -80,9 +80,35 @@ $entry-separation: 10px;
   lighten: ($primary, 70%);
 }
 
-.ninjas-entry, .certified-devs-entry {
+.ninjas-entry {
+  text-align: left;
+}
+
+.certified-devs-entry {
   text-align: center;
 }
+
+.ninjas-entry-inner {
+  display: grid;
+  grid-template-columns: 50px auto;
+  grid-template-rows: auto auto;
+  grid-template-areas: "nj-avatar nj-username"
+                       "nj-avatar nj-name"
+}
+
+.ninja-avatar {
+  grid-area: nj-avatar;
+  padding: 5px 0 0 0;
+}
+
+.ninja-username {
+  grid-area: nj-username;
+}
+
+.ninja-name {
+  grid-area: nj-name;
+}
+
 
  .ninja-name,.ninja-username, .certified-dev-name, .certified-dev-username  {
   font-weight: bold;

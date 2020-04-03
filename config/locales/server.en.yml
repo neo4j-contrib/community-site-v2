@@ -9,6 +9,7 @@ en:
     neo4j_blog_post_filter_tag_id: "Latest blog post widget: Numerical tag id to filter for latest appropriate highlighted post"
     neo4j_latest_announcements_category: "Category from which the Latest Announcements widget gets its feed"
     neo4j_latest_announcements_number_of_entries: "Number of entries in Latest Announcements widget"
+    neo4j_ninjas_number_of_entries: "Number of entries in the Ninjas widget"
     neo4j_community_content_category: "Category from which the Community Content widget gets its feed"
     neo4j_community_content_number_of_entries: "Number of entries in Community Content widget"
     neo4j_community_projects_category: "Category from which the Community Projects widget gets its feed"

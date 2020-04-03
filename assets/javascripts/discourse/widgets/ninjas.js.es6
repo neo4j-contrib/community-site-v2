@@ -56,21 +56,22 @@ export default createWidget('ninjas', {
             h("a",
               {
                 attributes: {
-                  "class": "ninja-avatar",
+                  "class": "ninja-entry-link",
                   "data-user-card": ninja.username
                 }
               },
-                [
-                  h("div.ninja-avatar",
-                    avatarImg("huge", {
-                      template: ninja.avatar_template,
-                      username: formatUsername(ninja.username)
-                    })
-                  ),
-                  h("div.ninja-username", ninja.username),
-                  h("div.ninja-name", (ninja.name === ninja.username ? "-" : ninja.name)),
-                  h("div.ninja-member-since", `${I18n.t('neo4j.widgets.ninjas.since')}: ${moment(ninja.first_seen).format("MMM Do YYYY")}`)
-                ]
+                h("div.ninjas-entry-inner",
+                  [
+                    h("div.ninja-avatar",
+                      avatarImg("medium", {
+                        template: ninja.avatar_template,
+                        username: formatUsername(ninja.username)
+                      })
+                    ),
+                    h("div.ninja-username", ninja.username),
+                    h("div.ninja-name", (ninja.name === ninja.username ? "-" : ninja.name))
+                  ]
+                )
               )
           ))
         })
