@@ -30,7 +30,7 @@ $entry-separation: 10px;
   margin-bottom: 20px;
 }
 
-.neo4j-widget-main-container, .tabset, .featured-member-image {
+.neo4j-widget-main-container, .tabset, .featured-member-container {
   margin-left: 10px;
 }
 
@@ -118,9 +118,27 @@ $entry-separation: 10px;
   color: $neo4j-grey;
 }
 
-.featured-member-image img{
-  width: 100%;
-  border-radius: 4px;
+.featured-member-container {
+  display:grid;
+  grid-gap: $entry-separation;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "left right";
+}
+
+.featured-member-image {
+  grid-area: left;
+  img {
+    width: 100%;
+    border-radius: 4px;
+  }
+}
+
+.featured-member-fixed-image {
+  grid-area: right;
+  img {
+    width: 100%;
+    border-radius: 4px;
+  }
 }
 
 .can-you-help-container {
