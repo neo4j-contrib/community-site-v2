@@ -62,14 +62,14 @@ export default createWidget('certified-developers', {
               },
                 [
                   h("div.certified-dev-avatar",
-                    avatarImg("huge", {
+                    avatarImg("extra_large", {
                       template: certified_dev.avatar_template,
                       username: formatUsername(certified_dev.username)
                     })
                   ),
                   h("div.certified-dev-username", certified_dev.username),
                   h("div.certified-dev-name", (certified_dev.name === certified_dev.username ? "-" : certified_dev.name)),
-                  h("div.certified-dev-member-since", `${I18n.t('neo4j.widgets.certified-devs.since')}: ${moment(certified_dev.first_seen).format("MMM Do YYYY")}`)
+                  h("div.certified-dev-member-since", `${I18n.t('neo4j.widgets.certified-devs.since')}: ${moment(certified_dev.created_at).format("MMM Do YYYY")}`)
                 ]
               )
           ))
