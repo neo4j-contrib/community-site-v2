@@ -12,8 +12,8 @@ export default createWidget('custom-categories', {
     var selected_categories  = Discourse.SiteSettings.neo4j_category_nav_categories.split('|');
 
     var categories = this.site.get("categoriesByCount").filter(entry => selected_categories.includes(`${entry.id}`));
-debugger;
-    categories.sort((a, b) => {  
+
+    categories.sort((a, b) => {
       return selected_categories.indexOf(`${a.id}`) - selected_categories.indexOf(`${b.id}`);
     });
 
