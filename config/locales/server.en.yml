@@ -1,5 +1,6 @@
 en:
   site_settings:
+    neo4j_category_nav_categories: "The Categories to be included in the main navigation widget"
     neo4j_twitter_script_url: "Latest Tweets script url"
     neo4j_twitter_handle_url: "Latest Tweets handle url"
     neo4j_twitter_height: "Latest Tweets widget height"

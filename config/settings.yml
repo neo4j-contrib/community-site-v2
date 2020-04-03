@@ -1,4 +1,9 @@
 plugins:
+  neo4j_category_nav_categories:
+    client: true
+    default: ''
+    type: category_list
+    list_type: "compact"
   neo4j_twitter_script:
     client: true
     default: 'https://platform.twitter.com/widgets.js'

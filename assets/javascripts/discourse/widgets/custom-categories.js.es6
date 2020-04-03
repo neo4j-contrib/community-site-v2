@@ -10,7 +10,7 @@ export default createWidget('custom-categories', {
     var subcategories_buffer = [];
     var subcategory_tabs = [];
 
-    var categories = this.site.get("categoriesByCount").filter(entry => typeof entry.subcategories !== 'undefined');
+    var categories = this.site.get("categoriesByCount").filter(entry => Discourse.SiteSettings.neo4j_category_nav_categories.split('|').includes(`${entry.id}`));
 
     if (categories !== null) {
       if (categories.length > 0) {
