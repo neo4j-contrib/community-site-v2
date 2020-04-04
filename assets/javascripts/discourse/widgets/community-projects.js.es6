@@ -109,7 +109,7 @@ export default createWidget('community-projects', {
         title: I18n.t('neo4j.widgets.community-projects.button.title'),
         onclick: createTopic
       },
-      [h('i.fa-plus.d-icon.d-icon-plus'), h('span.d-button-label', I18n.t('neo4j.widgets.community-projects.button.label'))]
+      [h('span.d-button-label', I18n.t('neo4j.widgets.community-projects.button.label'))]
     )
       ]),
       h('div.community-projects-container.neo4j-widget-main-container', buffer)
