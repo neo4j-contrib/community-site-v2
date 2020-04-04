@@ -36,6 +36,9 @@ en:
         community-projects:
           title: "Community Projects"
           link-text: "View all >>"
+          button:
+            label: "Post your own"
+            title: "Post your own"
         meet-new-members:
           title: "Meet New Members"
           link-text: "View all >>"
