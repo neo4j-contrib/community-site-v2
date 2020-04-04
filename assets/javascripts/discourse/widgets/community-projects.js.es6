@@ -4,6 +4,7 @@ import { getLatestTopics } from '../lib/get-latest-topics';
 import { avatarImg } from "discourse/widgets/post";
 import { formatUsername } from "discourse/lib/utilities";
 import { iconNode } from "discourse-common/lib/icon-library";
+import { default as Composer } from 'discourse/models/composer';
 
 export default createWidget('community-projects', {
   tagName: "div.community-projects",
@@ -36,6 +37,18 @@ export default createWidget('community-projects', {
   },
 
   html(args, state) {
+
+    const createTopic = () => {
+      const container = Discourse.__container__;
+      const controller = container.lookup("controller:navigation/category");
+      const composerController = container.lookup("controller:composer");
+
+      composerController.open({
+        action: Composer.CREATE_TOPIC,
+        draftKey: Composer.DRAFT,
+        categoryId: Discourse.SiteSettings.neo4j_community_projects_category
+      });
+    }
 
     if (!state.loaded) {
       this.refreshTopics(state);
@@ -90,7 +103,14 @@ export default createWidget('community-projects', {
           "attributes": {
             "href": `/c/${Discourse.SiteSettings.neo4j_community_projects_category}`
           }
-        }, I18n.t('neo4j.widgets.community-projects.link-text'))
+        }, I18n.t('neo4j.widgets.community-projects.link-text')),
+      h('button.neo4j-call-to-action-button',
+      {
+        title: I18n.t('neo4j.widgets.community-projects.button.title'),
+        onclick: createTopic
+      },
+      [h('span.d-button-label', I18n.t('neo4j.widgets.community-projects.button.label'))]
+    )
       ]),
       h('div.community-projects-container.neo4j-widget-main-container', buffer)
     ]);
