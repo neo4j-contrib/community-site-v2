@@ -46,8 +46,16 @@ class DiscourseNeo4j::WpRetrieve
 
         member = DiscourseNeo4j::FeaturedMember.new
 
-        member.image_source = document.css('img').first.attributes['src'].value
-        member.link =  document.css('.medium').first.attributes['href'].value
+        begin
+          member.image_source = document.css('img').first.attributes['src'].value
+        rescue
+          member.image_source = ""
+        end
+        begin
+          member.link = document.css('.medium').first.attributes['href'].value
+        rescue
+          member.link = ""
+        end
 
         member
       else
