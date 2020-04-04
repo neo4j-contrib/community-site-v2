@@ -23,7 +23,7 @@ export default createWidget('latest-blog-post', {
 
       if (result.id) {
 
-          state.blogpost = result;
+        state.blogpost = result;
         
         if (state.blogpost) {
           getBlogAuthor(state.blogpost.author).then((result) => {
@@ -64,35 +64,53 @@ export default createWidget('latest-blog-post', {
     var blogpost = state.blogpost;
 
     if (blogpost) {
-          buffer = h("div.latest-blog-post-entry",
-            [
-              h("h5",
-                h("a", {
-                    "attributes": {
-                      "href": blogpost.link,
-                      "rel": "noopener",
-                      "target":"_blank"
-                      }
-                  },
-                  h("span.latest-blog-post-title", unescapeHtml(blogpost.title.rendered))
-                )
-              ),
-              h("div.latest-blog-post-author",
-                h("a", {
-                    "attributes": {
-                      "href": blogpost.authors_url,
-                      "rel": "noopener",
-                      "target":"_blank"
-                      }
-                  },
-                  h("div.latest-blog-post-author-name", blogpost.authors_name)
-                )
-              ),
-              h("div.latest-blog-post-date", moment(blogpost.date).format("MMM Do")),
-              h("div.latest-blog-post-excerpt", unescapeHtml(blogpost.excerpt.rendered))
-            ]
+
+        var bullets = []
+
+        blogpost.bullets.forEach (bullet => {
+          bullets.push(h("li",
+              h("a", {
+                  "attributes": {
+                    "href": bullet.link,
+                    "rel": "noopener",
+                    "target":"_blank"
+                    }
+                },
+                h("span.latest-blog-post-bullet-title", unescapeHtml(bullet.title))
+              )
+            )
           )
-        }
+        });
+
+        buffer = h("div.latest-blog-post-entry",
+          [
+            h("h5",
+              h("a", {
+                  "attributes": {
+                    "href": blogpost.link,
+                    "rel": "noopener",
+                    "target":"_blank"
+                    }
+                },
+                h("span.latest-blog-post-title", unescapeHtml(blogpost.title))
+              )
+            ),
+            h("div.latest-blog-post-author",
+              h("a", {
+                  "attributes": {
+                    "href": blogpost.authors_url,
+                    "rel": "noopener",
+                    "target":"_blank"
+                    }
+                },
+                h("div.latest-blog-post-author-name", blogpost.authors_name)
+              )
+            ),
+            h("div.latest-blog-post-date", moment(blogpost.date).format("MMM Do")),
+            h("div.latest-blog-post-bullets", bullets)
+          ]
+        )
+      }
     return h('div.latest-blog-post-inner', [h('h3.neo4j-widget-sidebar-header', I18n.t('neo4j.widgets.blog_post.title')) ,buffer]);
   }
 });

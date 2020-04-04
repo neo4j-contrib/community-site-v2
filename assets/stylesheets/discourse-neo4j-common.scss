@@ -286,6 +286,11 @@ $entry-separation: 10px;
   a:hover {
     color: $neo4j-pale-blue;
   }
+
+  .latest-blog-post-bullets {
+    font-size: 10px;
+    padding: 7px;
+  }
 }
 
 .announcements-list-container, .latest-blog-post-entry {
