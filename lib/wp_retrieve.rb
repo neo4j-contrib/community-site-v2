@@ -11,7 +11,7 @@ class DiscourseNeo4j::WpRetrieve
 
     query="#{SiteSetting.neo4j_blog_url}/wp-json/wp/v2/posts?_fields=id,content,date,excerpt,title,link,tags,author"
 
-    Discourse.cache.fetch(wp_cache_key(query), expires_in: 1.second) do
+    Discourse.cache.fetch(wp_cache_key(query), expires_in: 1.hour) do
 
       response = get(query)
 
