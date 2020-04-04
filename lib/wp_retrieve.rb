@@ -9,9 +9,9 @@ class DiscourseNeo4j::WpRetrieve
 
   def self.latest_post
 
-    query="#{SiteSetting.neo4j_blog_url}/wp-json/wp/v2/posts?_fields=id,date,excerpt,title,link,tags,author"
+    query="#{SiteSetting.neo4j_blog_url}/wp-json/wp/v2/posts?_fields=id,content,date,excerpt,title,link,tags,author"
 
-    Discourse.cache.fetch(wp_cache_key(query), expires_in: 1.hour) do
+    Discourse.cache.fetch(wp_cache_key(query), expires_in: 1.second) do
 
       response = get(query)
 
@@ -21,7 +21,31 @@ class DiscourseNeo4j::WpRetrieve
           post['tags'].include? SiteSetting.neo4j_blog_post_filter_tag_id
         end 
 
-        blogpost.first
+        document = Nokogiri::HTML(blogpost.first['content']['rendered'])
+
+        begin
+          link = response.parsed_response[0]["link"]
+        rescue
+          link = ""
+        end
+
+        bullets = []
+
+        begin
+          document.css('h3').each do |title|
+            bullets << {title:title.children.text, link: "#{link}##{title.attributes["id"].value}"}
+          end
+        rescue
+          bullets = []
+        end
+
+        { id: blogpost.first["id"],
+          link: blogpost.first["link"],
+          title: blogpost.first["title"]["rendered"],
+          author: blogpost.first["author"],
+          date: blogpost.first["date"],
+          excerpt: blogpost.first["excerpt"]["rendered"],
+          bullets: bullets }
       else
         Rails.logger.warn ("Neo4j Featured Latest Post Retrieve: There was a problem")
       end
@@ -46,8 +70,16 @@ class DiscourseNeo4j::WpRetrieve
 
         member = DiscourseNeo4j::FeaturedMember.new
 
-        member.image_source = document.css('img').first.attributes['src'].value
-        member.link =  document.css('.medium').first.attributes['href'].value
+        begin
+          member.image_source = document.css('img').first.attributes['src'].value
+        rescue
+          member.image_source = ""
+        end
+        begin
+          member.link = document.css('.medium').first.attributes['href'].value
+        rescue
+          member.link = ""
+        end
 
         member
       else
