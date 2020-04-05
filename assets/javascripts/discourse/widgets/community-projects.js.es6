@@ -43,6 +43,11 @@ export default createWidget('community-projects', {
       const controller = container.lookup("controller:navigation/category");
       const composerController = container.lookup("controller:composer");
 
+      if (!Discourse.currentUser) {
+        DiscourseURL.routeTo('/login');
+        return;
+      }
+
       composerController.open({
         action: Composer.CREATE_TOPIC,
         draftKey: Composer.DRAFT,
