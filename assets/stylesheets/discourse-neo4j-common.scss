@@ -50,7 +50,7 @@ $entry-separation: 10px;
 
 .neo4j-widget-main-header {
   display: inline-block;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 
   a:link, a:visited {
     float: right;
@@ -84,8 +84,8 @@ $entry-separation: 10px;
 
 .neo4j-widget-main-entry {
   padding: 10px;
-  box-shadow: 0 1px 3px 0 rgba(0,0,0,0.30),0 0 0 0 rgba(0,0,0,0.15);
   border-radius: 4px;
+  border: solid 1px $neo4j-lightgrey;
   color: $neo4j-dark;   
   a {
     color: $neo4j-dark;
