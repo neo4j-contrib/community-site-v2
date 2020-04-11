@@ -519,19 +519,15 @@ $entry-separation: 10px;
   display: inline-block !important;
   margin-right: 5px;
   margin-bottom: 10px;
-  // vertical-align: middle;
   margin: 0 auto;
 }
 
 .neo-link-top-line {
   display: inline-block !important;
-  // vertical-align: middle;
-  // margin-left: 100px;
   vertical-align: top;
 }
 
 .neo-link-bottom-line {
-  // margin-left: 200px;
   margin: auto 0;
   display: inline-flex !important;
   margin-left: 50px;
@@ -539,7 +535,6 @@ $entry-separation: 10px;
 }
 
 .neo-raw-topic-link {
-  // margin-left: 20px;
   display: inline !important;
 }
 
@@ -568,7 +563,6 @@ div.neo-link-bottom-line > a > span.badge-category.clear-badge {
 .neo-reply-count {
   vertical-align: top;
   margin-top: 35px;
-  // font-size: $font-down-1;
 }
 
 .neo-new-topic-button {
@@ -680,7 +674,7 @@ div.neo-link-bottom-line > a > span.badge-category.clear-badge {
   }
 }
 @import "common/foundation/variables";
-// test css
+
 @media screen and (min-width: 767px) {
   // Show the sidebar at 767px
   .custom-sidebar {
@@ -714,15 +708,9 @@ div.neo-link-bottom-line > a > span.badge-category.clear-badge {
         order: 3;
         padding: 0;
         position: relative;
-        // @if $stick-on-scroll == "true" {
           position: sticky;
           top: 80px;
-          // max-height: 70vh;
-          @media screen and (max-height: 925px) {
-            // max-height: 55vh;
-          }
           overflow-y: auto;
-        // }
         .cooked {
           img,
           video,
