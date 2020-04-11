@@ -37,10 +37,13 @@ plugins:
     default: 6
     max: 6
     min: 6
-  neo4j_featured_member_fixed_image_source:
+  neo4j_ninjas_link:
     client: true
     default: ''
-  neo4j_featured_member_fixed_image_link:
+  neo4j_loves_developers_fixed_image_source:
+    client: true
+    default: ''
+  neo4j_loves_developers_fixed_image_link:
     client: true
     default: ''
   neo4j_can_you_help_search_criteria:
@@ -86,6 +89,9 @@ plugins:
     default: ''
     type: group_list
     list_type: "compact"
+  neo4j_certified_devs_get_certified_link:
+    client: true
+    default: ''
   neo4j_certified_devs_number_of_entries:
     client: true
     default: 3

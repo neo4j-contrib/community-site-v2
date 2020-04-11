@@ -53,7 +53,7 @@ export default createWidget('featured-member', {
     var featured_member = state.featured_member;
 
     if (featured_member) {
-      buffer = h("div.featured-member-container", [
+      buffer = h("div.featured-member-container",
         h("div.featured-member-image",
           (h("a", {
             "attributes": {
@@ -66,26 +66,12 @@ export default createWidget('featured-member', {
               attributes: {
                 "src" : featured_member.image_source
               }
-            })
-          ))
-        ),
-        h("div.featured-member-fixed-image",
-          (h("a", {
-            "attributes": {
-              "href": Discourse.SiteSettings.neo4j_featured_member_fixed_image_link,
-              "rel": "noopener",
-              "target":"_blank"
             }
-            },
-            h("img", {
-              attributes: {
-                "src" : Discourse.SiteSettings.neo4j_featured_member_fixed_image_source
-              }
-            })
+            )
           ))
         )
-      ])
+      )
     }
-    return h('div.featured-member-inner.neo4j-widget-main', [h('div.neo4j-widget-main-header', h('h3.neo4j-widget-main-title', I18n.t('neo4j.widgets.featured-member.title'))), buffer]);
+    return h('div.featured-member-inner.neo4j-widget-main', [h('div.neo4j-widget-main-header.neo4j-featured-member-header', h('h3.neo4j-widget-main-title', I18n.t('neo4j.widgets.featured-member.title'))), buffer]);
   }
 });

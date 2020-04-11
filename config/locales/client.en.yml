@@ -14,9 +14,12 @@ en:
           link-text: "View all >>"
         featured-member:
           title: "Featured Community Member"
+        neo4j-loves-developers:
+          title: "(Neo4j)-[LOVES]->(Developers)"
         ninjas:
           title: "Neo4j Ninjas of the Week"
           since: "Member since"
+          link-text: "View all >>"
         neo4j-newbie-links:
           title: "Neo4j Newbie"
         graph-gear-store-links:
@@ -33,19 +36,28 @@ en:
         community-content:
           title: "Neo4j + Community-Created Content & Blogs"
           link-text: "View all >>"
+          button:
+            label: "Post"
+            title: "Post"
         community-projects:
           title: "Community Projects"
           link-text: "View all >>"
           button:
-            label: "Post your own"
-            title: "Post your own"
+            label: "Post"
+            title: "Post"
         meet-new-members:
           title: "Meet New Members"
           link-text: "View all >>"
+          button:
+            label: "Introduce Yourself"
+            title: "Introduce Yourself"
         certified-devs:
           title: "New Certified Developers"
           since: "Certified since"
           link-text: "View all >>"
+          button:
+            label: "Get Certified"
+            title: "Get Certified"
       search-placeholder-text: "Search the community"
       neo-create-topic-text: "Start a new Discussion"
       neo-last-reply-by-text: "Last reply by"

@@ -36,6 +36,10 @@ export default createWidget('certified-developers', {
 
   html(args, state) {
 
+    const gotoLink = () => {
+      DiscourseURL.redirectTo(Discourse.SiteSettings.neo4j_certified_devs_get_certified_link);
+    }
+
     if (!state.loaded) {
       this.refreshCertifiedDevs(state);
     }
@@ -83,8 +87,15 @@ export default createWidget('certified-developers', {
             "attributes": {
               "href": `/g/${certified_devs[0].group_name}`
             }
-          }, I18n.t('neo4j.widgets.certified-devs.link-text'))
-        ]),
-       h('div.certified-devs-container.neo4j-widget-main-container', buffer)]);
+          }, I18n.t('neo4j.widgets.certified-devs.link-text')),
+        h('button.neo4j-call-to-action-button',
+        {
+          title: I18n.t('neo4j.widgets.certified-devs.button.title'),
+          onclick: gotoLink
+        },
+        [h('span.d-button-label', I18n.t('neo4j.widgets.certified-devs.button.label'))]
+        )
+      ]),
+    h('div.certified-devs-container.neo4j-widget-main-container', buffer)]);
    }
 });

@@ -4,7 +4,9 @@ import { getLatestTopics } from '../lib/get-latest-topics';
 import { avatarImg } from "discourse/widgets/post";
 import { formatUsername } from "discourse/lib/utilities";
 import { iconNode } from "discourse-common/lib/icon-library";
-import { default as Composer } from 'discourse/models/composer';
+import { getOwner } from 'discourse-common/lib/get-owner';
+//import createTopic from "../mixins/create-topic";
+
 
 export default createWidget('community-projects', {
   tagName: "div.community-projects",
@@ -38,21 +40,9 @@ export default createWidget('community-projects', {
 
   html(args, state) {
 
-    const createTopic = () => {
-      const container = Discourse.__container__;
-      const controller = container.lookup("controller:navigation/category");
-      const composerController = container.lookup("controller:composer");
-
-      if (!Discourse.currentUser) {
-        DiscourseURL.routeTo('/login');
-        return;
-      }
-
-      composerController.open({
-        action: Composer.CREATE_TOPIC,
-        draftKey: Composer.DRAFT,
-        categoryId: Discourse.SiteSettings.neo4j_community_projects_category
-      });
+    const createNew = () => {
+      const controller = getOwner(this).lookup('controller:home');
+      controller.send("createTopic", Discourse.SiteSettings.neo4j_community_projects_category);
     }
 
     if (!state.loaded) {
@@ -110,12 +100,12 @@ export default createWidget('community-projects', {
           }
         }, I18n.t('neo4j.widgets.community-projects.link-text')),
       h('button.neo4j-call-to-action-button',
-      {
-        title: I18n.t('neo4j.widgets.community-projects.button.title'),
-        onclick: createTopic
-      },
-      [h('span.d-button-label', I18n.t('neo4j.widgets.community-projects.button.label'))]
-    )
+        {
+          title: I18n.t('neo4j.widgets.community-projects.button.title'),
+          onclick: createNew
+        },
+        [h('span.d-button-label', I18n.t('neo4j.widgets.community-projects.button.label'))]
+      )
       ]),
       h('div.community-projects-container.neo4j-widget-main-container', buffer)
     ]);
