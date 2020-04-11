@@ -31,10 +31,6 @@ $entry-separation: 10px;
   margin-bottom: 20px;
 }
 
-.neo4j-widget-main-container, .tabset, .featured-member-container {
-  margin-left: 10px;
-}
-
 .neo4j-widget-sidebar {
   margin-bottom: 15px;
 }
@@ -135,14 +131,14 @@ $entry-separation: 10px;
   color: $neo4j-grey;
 }
 
-.featured-member-container {
+.neo4j-home-grid-featured-and-loves {
   display:grid;
   grid-gap: $entry-separation;
   grid-template-columns: 1fr 1fr;
   grid-template-areas: "left right";
 }
 
-.featured-member-image {
+.neo4j-home-grid-featured {
   grid-area: left;
   img {
     width: 100%;
@@ -150,12 +146,20 @@ $entry-separation: 10px;
   }
 }
 
-.featured-member-fixed-image {
+.neo4j-home-grid-loves {
   grid-area: right;
   img {
     width: 100%;
     border-radius: 4px;
   }
+}
+
+.neo4j-featured-member-header {
+  width: 95%
+}
+
+.neo4j-loves-developers-header {
+  width: 96%
 }
 
 .can-you-help-container {
