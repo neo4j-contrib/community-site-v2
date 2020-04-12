@@ -3,6 +3,7 @@ import { h } from 'virtual-dom';
 import { getCertifiedDevs } from '../lib/get-certified-devs';
 import { avatarImg } from "discourse/widgets/post";
 import { formatUsername } from "discourse/lib/utilities";
+import DiscourseURL from 'discourse/lib/url';
 
 export default createWidget('certified-developers', {
   tagName: "div.certified-developers",
