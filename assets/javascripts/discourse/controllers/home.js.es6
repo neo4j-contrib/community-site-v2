@@ -1,5 +1,6 @@
 import { Category } from 'discourse/models/category';
 import { default as Composer } from 'discourse/models/composer';
+import DiscourseURL from 'discourse/lib/url';
 
 export default Ember.Controller.extend({
 
