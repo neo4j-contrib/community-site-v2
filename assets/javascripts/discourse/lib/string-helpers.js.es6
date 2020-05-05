@@ -12,7 +12,7 @@
         ['quot', '"']
     ];
 
-    text = text || ""
+    if (text == null) {return ""};
 
     entities.forEach((entity) => {
       text = text.replace(new RegExp('&'+entity[0]+';', 'g'), entity[1]);

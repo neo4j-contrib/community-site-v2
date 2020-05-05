@@ -3,6 +3,7 @@ import { h } from 'virtual-dom';
 import { getCertifiedDevs } from '../lib/get-certified-devs';
 import { avatarImg } from "discourse/widgets/post";
 import { formatUsername } from "discourse/lib/utilities";
+import DiscourseURL from 'discourse/lib/url';
 
 export default createWidget('certified-developers', {
   tagName: "div.certified-developers",
@@ -36,6 +37,10 @@ export default createWidget('certified-developers', {
 
   html(args, state) {
 
+    const gotoLink = () => {
+      DiscourseURL.redirectTo(Discourse.SiteSettings.neo4j_certified_devs_get_certified_link);
+    }
+
     if (!state.loaded) {
       this.refreshCertifiedDevs(state);
     }
@@ -62,14 +67,14 @@ export default createWidget('certified-developers', {
               },
                 [
                   h("div.certified-dev-avatar",
-                    avatarImg("huge", {
+                    avatarImg("extra_large", {
                       template: certified_dev.avatar_template,
                       username: formatUsername(certified_dev.username)
                     })
                   ),
                   h("div.certified-dev-username", certified_dev.username),
                   h("div.certified-dev-name", (certified_dev.name === certified_dev.username ? "-" : certified_dev.name)),
-                  h("div.certified-dev-member-since", `${I18n.t('neo4j.widgets.certified-devs.since')}: ${moment(certified_dev.first_seen).format("MMM Do YYYY")}`)
+                  h("div.certified-dev-member-since", `${I18n.t('neo4j.widgets.certified-devs.since')}: ${moment(certified_dev.created_at).format("MMM Do YYYY")}`)
                 ]
               )
           ))
@@ -83,8 +88,15 @@ export default createWidget('certified-developers', {
             "attributes": {
               "href": `/g/${certified_devs[0].group_name}`
             }
-          }, I18n.t('neo4j.widgets.certified-devs.link-text'))
-        ]),
-       h('div.certified-devs-container.neo4j-widget-main-container', buffer)]);
+          }, I18n.t('neo4j.widgets.certified-devs.link-text')),
+        h('button.neo4j-call-to-action-button',
+        {
+          title: I18n.t('neo4j.widgets.certified-devs.button.title'),
+          onclick: gotoLink
+        },
+        [h('span.d-button-label', I18n.t('neo4j.widgets.certified-devs.button.label'))]
+        )
+      ]),
+    h('div.certified-devs-container.neo4j-widget-main-container', buffer)]);
    }
 });

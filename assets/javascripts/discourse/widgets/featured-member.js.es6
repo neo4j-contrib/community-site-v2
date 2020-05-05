@@ -53,22 +53,25 @@ export default createWidget('featured-member', {
     var featured_member = state.featured_member;
 
     if (featured_member) {
-      buffer = h("div.featured-member-image",
-        (h("a", {
-          "attributes": {
-            "href": featured_member.link,
-            "rel": "noopener",
-            "target":"_blank"
-          }
-          },
-          h("img", {
-            attributes: {
-              "src" : featured_member.image_source
+      buffer = h("div.featured-member-container",
+        h("div.featured-member-image",
+          (h("a", {
+            "attributes": {
+              "href": featured_member.link,
+              "rel": "noopener",
+              "target":"_blank"
             }
-          })
-        ))
+            },
+            h("img", {
+              attributes: {
+                "src" : featured_member.image_source
+              }
+            }
+            )
+          ))
+        )
       )
     }
-    return h('div.featured-member-inner.neo4j-widget-main', [h('div.neo4j-widget-main-header', h('h3.neo4j-widget-main-title', I18n.t('neo4j.widgets.featured-member.title'))), buffer]);
+    return h('div.featured-member-inner.neo4j-widget-main', [h('div.neo4j-widget-main-header.neo4j-featured-member-header', h('h3.neo4j-widget-main-title', I18n.t('neo4j.widgets.featured-member.title'))), buffer]);
   }
 });

@@ -5,6 +5,7 @@ import { avatarImg } from "discourse/widgets/post";
 import { formatUsername } from "discourse/lib/utilities";
 import { iconNode } from "discourse-common/lib/icon-library";
 import { decodeHTMLEntities } from '../lib/string-helpers';
+import { getOwner } from 'discourse-common/lib/get-owner';
 
 export default createWidget('meet-new-members', {
   tagName: "div.meet-new-members",
@@ -38,6 +39,11 @@ export default createWidget('meet-new-members', {
 
   html(args, state) {
 
+    const createNew = () => {
+      const controller = getOwner(this).lookup('controller:home');
+      controller.send("createTopic", Discourse.SiteSettings.neo4j_meet_new_members_category);
+    }
+
     if (!state.loaded) {
       this.refreshTopics(state);
     }
@@ -63,7 +69,7 @@ export default createWidget('meet-new-members', {
               },
                 [
                   h("div.meet-new-members-avatar",
-                    avatarImg("huge", {
+                    avatarImg("extra_large", {
                       template: topic.avatar_template,
                       username: formatUsername(topic.username)
                     })
@@ -89,7 +95,14 @@ export default createWidget('meet-new-members', {
           "attributes": {
             "href": `/c/${Discourse.SiteSettings.neo4j_meet_new_members_category}`
           }
-        }, I18n.t('neo4j.widgets.meet-new-members.link-text'))
+        }, I18n.t('neo4j.widgets.meet-new-members.link-text')),
+        h('button.neo4j-call-to-action-button',
+          {
+            title: I18n.t('neo4j.widgets.meet-new-members.button.title'),
+            onclick: createNew
+          },
+          [h('span.d-button-label', I18n.t('neo4j.widgets.meet-new-members.button.label'))]
+        )
       ]),
       h('div.meet-new-members-container.neo4j-widget-main-container', buffer)
     ]);

@@ -1,4 +1,9 @@
 plugins:
+  neo4j_category_nav_categories:
+    client: true
+    default: ''
+    type: category_list
+    list_type: "compact"
   neo4j_twitter_script:
     client: true
     default: 'https://platform.twitter.com/widgets.js'
@@ -27,6 +32,20 @@ plugins:
     default: 5
     max: 10
     min: 1
+  neo4j_ninjas_number_of_entries:
+    client: true
+    default: 6
+    max: 6
+    min: 6
+  neo4j_ninjas_link:
+    client: true
+    default: ''
+  neo4j_loves_developers_fixed_image_source:
+    client: true
+    default: ''
+  neo4j_loves_developers_fixed_image_link:
+    client: true
+    default: ''
   neo4j_can_you_help_search_criteria:
     client: true
     default: 'q=status%3Anoreplies%20after%3A14%20-tags%3Aknowledge-base%20in%3Aunseen%20order%3Alatest'
@@ -70,6 +89,9 @@ plugins:
     default: ''
     type: group_list
     list_type: "compact"
+  neo4j_certified_devs_get_certified_link:
+    client: true
+    default: ''
   neo4j_certified_devs_number_of_entries:
     client: true
     default: 3

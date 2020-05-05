@@ -9,7 +9,7 @@ class ::DiscourseNeo4j::NinjasController < ::ApplicationController
         and u.moderator = FALSE
         and u.admin = FALSE
         order by likes_received DESC
-        LIMIT 3
+        LIMIT #{SiteSetting.neo4j_ninjas_number_of_entries}
     SQL
 
     output = DB.query(sql)

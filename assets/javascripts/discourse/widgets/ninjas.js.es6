@@ -56,26 +56,36 @@ export default createWidget('ninjas', {
             h("a",
               {
                 attributes: {
-                  "class": "ninja-avatar",
+                  "class": "ninja-entry-link",
                   "data-user-card": ninja.username
                 }
               },
-                [
-                  h("div.ninja-avatar",
-                    avatarImg("huge", {
-                      template: ninja.avatar_template,
-                      username: formatUsername(ninja.username)
-                    })
-                  ),
-                  h("div.ninja-username", ninja.username),
-                  h("div.ninja-name", (ninja.name === ninja.username ? "-" : ninja.name)),
-                  h("div.ninja-member-since", `${I18n.t('neo4j.widgets.ninjas.since')}: ${moment(ninja.first_seen).format("MMM Do YYYY")}`)
-                ]
+                h("div.ninjas-entry-inner",
+                  [
+                    h("div.ninja-avatar",
+                      avatarImg("medium", {
+                        template: ninja.avatar_template,
+                        username: formatUsername(ninja.username)
+                      })
+                    ),
+                    h("div.ninja-username", ninja.username),
+                    h("div.ninja-name", (ninja.name === ninja.username ? "-" : ninja.name))
+                  ]
+                )
               )
           ))
         })
       }
     }
-    return h('div.ninjas.neo4j-widget-main', [h('div.neo4j-widget-main-header', h('h3.neo4j-widget-main-title', I18n.t('neo4j.widgets.ninjas.title'))), h('div.ninjas-container.neo4j-widget-main-container', buffer)]);
+    return h('div.ninjas.neo4j-widget-main', [
+      h('div.neo4j-widget-main-header', [
+        h('h3.neo4j-widget-main-title', I18n.t('neo4j.widgets.ninjas.title')),
+        h('a.ninjas-main-link.neo4j-widget-main-main-link', {
+          "attributes": {
+            "href": Discourse.SiteSettings.neo4j_ninjas_link
+          }
+        }, I18n.t('neo4j.widgets.ninjas.link-text'))
+      ]),
+      h('div.ninjas-container.neo4j-widget-main-container', buffer)]);
    }
 });
