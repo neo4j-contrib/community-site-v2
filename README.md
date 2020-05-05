@@ -17,7 +17,6 @@ The plugin is broadly split into two:
 
 This is a collection of widgets which each present either a collection of Users or Topics depending on the specification.
 
-
 ### Topic List
 
 The Topic List is presents a custom format which differs from the Core Discourse as per client specification.
