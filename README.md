@@ -21,14 +21,14 @@ This is a collection of widgets which each present either a collection of Users 
 
 The Topic List is presents a custom format which differs from the Core Discourse as per client specification.
 
-## Technology & Architecture Used
+## Technology & architecture used
 
 The plugin uses the same technologies as base Discourse, that is:
 
 - Javascript, Hyperscript and the Ember framework
 - Ruby on Rails extended with Nokogiri and Httparty gems
 
-The plugin makes use of the main sites WordPress API to retrieve some information for the dashboard.
+The plugin makes use of the main site's WordPress API to retrieve some information for the dashboard.
 
 ## Any known issues
 
