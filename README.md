@@ -1,6 +1,6 @@
-# discourse-neo4j
+# community-site-v2
 
-Discourse plugin for Neo4j that adds various enhancements, features and formatting
+Redesign community.neo4j.com.  Discourse plugin for the Neo4j community that adds various enhancements, features and formatting
 
 ## Overview of what the plugin does
 
